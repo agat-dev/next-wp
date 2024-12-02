@@ -138,7 +138,7 @@ const Footer = () => {
             <h5 className="font-medium text-base">Website</h5>
             {Object.entries(mainMenu).map(([key, href]) => (
               <Link
-                className="hover:underline underline-offset-4"
+                className=""
                 key={href}
                 href={href}
               >
@@ -150,7 +150,7 @@ const Footer = () => {
             <h5 className="font-medium text-base">Blog</h5>
             {Object.entries(contentMenu).map(([key, href]) => (
               <Link
-                className="hover:underline underline-offset-4"
+                className=""
                 key={href}
                 href={href}
               >
