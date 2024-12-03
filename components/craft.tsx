@@ -40,15 +40,15 @@ const Main = ({ children, className, id }: MainProps) => {
         // `Main` Specific Styles
         "max-w-none prose-p:m-0",
         // General Prose
-        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-lg",
+        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-md",
         // Prose Headings
         "prose-headings:font-normal",
         // Prose Strong
         "prose-strong:font-semibold",
         // Inline Links
-        "prose-a:text-foreground/75 prose-a:transition-all",
+        "prose-a:text-foreground/75 prose-a:transition-all prose-a:no-underline",
         // Inline Link Hover
-        "hover:prose-a:text-foreground",
+        "hover:prose-a:no-underline hover:prose-a:text-foreground",
         // Blockquotes
         "prose-blockquote:not-italic",
         // Pre and Code Blocks
@@ -111,7 +111,7 @@ const Article = ({
       dangerouslySetInnerHTML={dangerouslySetInnerHTML}
       className={cn(
         // General Prose
-        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-lg",
+        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-md",
         // Prose Headings
         "prose-headings:font-normal",
         // Prose Paragraphs
@@ -119,9 +119,9 @@ const Article = ({
         // Prose Strong
         "prose-strong:font-semibold",
         // Inline Links
-        " prose-a:text-foreground/75 prose-a:transition-all",
+        "prose-a:no-underline prose-a:text-foreground/75 prose-a:transition-all",
         // Inline Link Hover
-        "hover:prose-a:text-foreground",
+        "hover:prose-a:no-underline hover:prose-a:text-foreground",
         // Blockquotes
         "prose-blockquote:not-italic",
         // Pre and Code Blocks

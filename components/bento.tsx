@@ -17,37 +17,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-const BentoGrid = ({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div
-      className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-};
+
 
 const BentoCard = ({
   name,
   className,
   background,
   description,
-  href,
 }: {
   name: string;
   className: string;
   background: ReactNode;
   description: string;
-  href: string;
 }) => (
   <div
     key={name}
@@ -96,8 +77,7 @@ export const HoverEffectBento = ({
     return (
       <div
         className={cn(
-          "grid w-full auto-rows-[22rem] grid-cols-3",
-          //"grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10",
+          "grid w-full auto-rows-[16rem] grid-cols-3",
           className
         )}
       >
@@ -105,7 +85,7 @@ export const HoverEffectBento = ({
             <Link
             href={item?.link}
             key={item?.link}
-            className={cn("relative p-4 col-span-3", item.classNameLink)}
+            className={cn("relative p-2 col-span-3", item.classNameLink)}
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -131,7 +111,6 @@ export const HoverEffectBento = ({
               className='h-full'
               background={item.background}
               description={item.description}
-              href={item.link}
             />
             </Link>
         ))}
@@ -141,4 +120,4 @@ export const HoverEffectBento = ({
   
 
 
-export { BentoCard, BentoGrid };
+export { BentoCard };

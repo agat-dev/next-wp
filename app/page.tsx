@@ -37,15 +37,15 @@ const ExampleJsx = () => {
       <HoverEffectBento
         items={[
           {
-            title: "Get Started",
+            title: "Projets",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
-            link: "https://agat.dev",
+            link: "/projet",
             background: <div>Background</div>,
             classNameLink: "lg:col-span-1",
           },
           {
-            title: "Documentation",
+            title: "A propos",
             description:
               "Learn how to use the components and features of this starter.",
             link: "https://agat.dev",
@@ -53,28 +53,28 @@ const ExampleJsx = () => {
             classNameLink: "lg:col-span-2",
           },
           {
-            title: "Get Started",
+            title: "Services",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
-            link: "https://agat.dev",
+            link: "/services",
+            background: <div>Background</div>,
+            classNameLink: "lg:col-span-2",
+          },
+          {
+            title: "Technos",
+            description:
+              "Learn how to use the components and features of this starter.",
+            link: "/techno",
             background: <div>Background</div>,
             classNameLink: "lg:col-span-1",
           },
           {
-            title: "Documentation",
+            title: "Blog",
             description:
               "Learn how to use the components and features of this starter.",
-            link: "https://agat.dev",
+            link: "/posts",
             background: <div>Background</div>,
-            classNameLink: "lg:col-span-1",
-          },
-          {
-            title: "Documentation",
-            description:
-              "Learn how to use the components and features of this starter.",
-            link: "https://agat.dev",
-            background: <div>Background</div>,
-            classNameLink: "lg:col-span-1",
+            classNameLink: "lg:col-span-3",
           },
       ]}
       />
