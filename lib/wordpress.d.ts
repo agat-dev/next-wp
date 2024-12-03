@@ -44,6 +44,8 @@ export type Post = {
   tags: number[];
 };
 
+/* Ajouts projets */
+
 export type Projet = {
   id: number;
   date: string;
@@ -90,6 +92,52 @@ export type Projet = {
   categories: number[];
   tags: number[];
 };
+/* end Ajouts projets */
+
+/* Ajouts technos */
+
+export type Techno = {
+  id: number;
+  date: string;
+  date_gmt: string;
+  guid: {
+    rendered: string;
+  };
+  modified: string;
+  modified_gmt: string;
+  slug: string;
+  status: "publish" | "future" | "draft" | "pending" | "private";
+  type: string;
+  link: string;
+  title: {
+    rendered: string;
+  };
+  acf: {
+			description: string;
+			url_de_la_techno: string;
+		},
+  author: number;
+  featured_media: number;
+  sticky: boolean;
+  template: string;
+  format:
+    | "standard"
+    | "aside"
+    | "chat"
+    | "gallery"
+    | "link"
+    | "image"
+    | "quote"
+    | "status"
+    | "video"
+    | "audio";
+  meta: any[];
+  categories: number[];
+  tags: number[];
+};
+
+/* end Ajouts technos */
+
 
 export type Category = {
   id: number;

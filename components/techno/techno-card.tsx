@@ -11,15 +11,14 @@ import {
 } from "@/lib/wordpress";
 
 export default async function PostCard({ post }: { post: Post }) {
-  const media = await getFeaturedMediaById(post.featured_media); 
-  const mediaUrl = media.source_url;
-  console.log(mediaUrl);
+  const media = await getFeaturedMediaById(post.featured_media);
+  const author = await getAuthorById(post.author);
   const date = new Date(post.date).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
   });
-  const category = await getCategoryById(post.categories[0]); 
+  const category = await getCategoryById(post.categories[0]);
 
   return (
     <Link
@@ -31,13 +30,7 @@ export default async function PostCard({ post }: { post: Post }) {
     >
       <div className="flex flex-col gap-4">
         <div className="h-48 w-full overflow-hidden relative rounded-md border flex items-center justify-center">
-          <Image
-            className="h-full w-full object-cover"
-            src={mediaUrl}
-            alt={post.title.rendered}
-            width={400}
-            height={200}
-          />
+          <img src={media.source_url} alt={post.title.rendered} />
         </div>
         <div
           dangerouslySetInnerHTML={{ __html: post.title.rendered }}

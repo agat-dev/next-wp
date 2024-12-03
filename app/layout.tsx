@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import React from "react";
 
 import "./globals.css";
 
-import { BackgroundDots } from "@/components/dotbg";
+import { DotBg } from "@/components/dotbg";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/nav/mobile-nav";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -13,7 +14,9 @@ import { Main } from "@/components/craft";
 import { mainMenu, contentMenu } from "@/menu.config";
 import { Section, Container } from "@/components/craft";
 import Balancer from "react-wrap-balancer";
+import { FloatingNav } from "@/components/ui/floating-navbar";
 
+ 
 import Logo from "@/public/logo.svg";
 
 import Image from "next/image";
@@ -36,6 +39,27 @@ export const metadata: Metadata = {
 // Revalidate content every hour
 export const revalidate = 3600;
 
+
+const navItems = [
+  {
+    name: "://a",
+    link: "/",
+  },
+  {
+    name: "Services",
+    link: "/service",
+  },
+  {
+    name: "Projets",
+    link: "/projet",
+  },
+  {
+    name: "Blog",
+    link: "/posts",
+  },  
+];
+
+
 export default function RootLayout({
   children,
 }: {
@@ -47,15 +71,18 @@ export default function RootLayout({
       <body
         className={cn("min-h-screen font-sans antialiased", fontSans.variable)}
       >
-        <BackgroundDots />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Nav />
+
+          <DotBg/>
+            <FloatingNav navItems={navItems} />
           <Main>{children}</Main>
+
+
           <Footer />
         </ThemeProvider>
         <Analytics />
@@ -63,6 +90,7 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 const Nav = ({ className, children, id }: NavProps) => {
   return (
@@ -137,7 +165,7 @@ const Footer = () => {
             <h5 className="font-medium text-base">Website</h5>
             {Object.entries(mainMenu).map(([key, href]) => (
               <Link
-                className="hover:underline underline-offset-4"
+                className=""
                 key={href}
                 href={href}
               >
@@ -149,7 +177,7 @@ const Footer = () => {
             <h5 className="font-medium text-base">Blog</h5>
             {Object.entries(contentMenu).map(([key, href]) => (
               <Link
-                className="hover:underline underline-offset-4"
+                className=""
                 key={href}
                 href={href}
               >
