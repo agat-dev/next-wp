@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import React from "react";
 
 import "./globals.css";
 
@@ -13,7 +14,9 @@ import { Main } from "@/components/craft";
 import { mainMenu, contentMenu } from "@/menu.config";
 import { Section, Container } from "@/components/craft";
 import Balancer from "react-wrap-balancer";
+import { FloatingNav } from "@/components/ui/floating-navbar";
 
+ 
 import Logo from "@/public/logo.svg";
 
 import Image from "next/image";
@@ -36,6 +39,27 @@ export const metadata: Metadata = {
 // Revalidate content every hour
 export const revalidate = 3600;
 
+
+const navItems = [
+  {
+    name: "://a",
+    link: "/",
+  },
+  {
+    name: "Services",
+    link: "/service",
+  },
+  {
+    name: "Projets",
+    link: "/projet",
+  },
+  {
+    name: "Blog",
+    link: "/posts",
+  },  
+];
+
+
 export default function RootLayout({
   children,
 }: {
@@ -53,10 +77,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          
-          <Nav />
+
           <DotBg/>
+            <FloatingNav navItems={navItems} />
           <Main>{children}</Main>
+
+
           <Footer />
         </ThemeProvider>
         <Analytics />
@@ -64,6 +90,7 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 const Nav = ({ className, children, id }: NavProps) => {
   return (
