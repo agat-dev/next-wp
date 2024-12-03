@@ -11,14 +11,15 @@ import {
 } from "@/lib/wordpress";
 
 export default async function PostCard({ post }: { post: Post }) {
-  const media = await getFeaturedMediaById(post.featured_media);
-  const author = await getAuthorById(post.author);
+  const media = await getFeaturedMediaById(post.featured_media); 
+  const mediaUrl = media.source_url;
+  console.log(mediaUrl);
   const date = new Date(post.date).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
   });
-  const category = await getCategoryById(post.categories[0]);
+  const category = await getCategoryById(post.categories[0]); 
 
   return (
     <Link
@@ -32,7 +33,7 @@ export default async function PostCard({ post }: { post: Post }) {
         <div className="h-48 w-full overflow-hidden relative rounded-md border flex items-center justify-center">
           <Image
             className="h-full w-full object-cover"
-            src={media.source_url}
+            src={mediaUrl}
             alt={post.title.rendered}
             width={400}
             height={200}

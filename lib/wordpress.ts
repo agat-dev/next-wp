@@ -319,7 +319,7 @@ export async function getProjetsByTagSlug(tagSlug: string): Promise<Projet[]> {
 /* end ajout projets */
 
 export async function getFeaturedMediaById(id: number): Promise<FeaturedMedia> {
-  const url = getUrl(`/wp-json/wp/v2/media/?id=${id}`);
+  const url = getUrl(`/wp-json/wp/v2/media/${id}`);
   const response = await fetch(url);
   const featuredMedia: FeaturedMedia = await response.json();
   return featuredMedia;
