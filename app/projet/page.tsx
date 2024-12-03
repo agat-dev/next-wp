@@ -43,10 +43,8 @@ export default async function Page({
       <Container>
         <h1>Projets</h1>
         <FilterPosts
-          authors={authors}
           tags={tags}
           categories={categories}
-          selectedAuthor={author}
           selectedTag={tag}
           selectedCategory={category}
         />

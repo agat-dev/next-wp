@@ -17,7 +17,7 @@ type LayoutProps = {
 const Layout = ({ children, className }: LayoutProps) => {
   return (
     <html
-      lang="en"
+      lang="fr"
       suppressHydrationWarning
       className={cn("scroll-smooth antialiased focus:scroll-auto", className)}
     >
@@ -86,7 +86,7 @@ type ContainerProps = {
 
 const Container = ({ children, className, id }: ContainerProps) => {
   return (
-    <div className={cn("mx-auto max-w-5xl", "p-4 sm:p-8", "bg-white", className)} id={id}>
+    <div className={cn("mx-auto max-w-screen-xl", "p-4 sm:p-8", "bg-white", className)} id={id}>
       {children}
     </div>
   );

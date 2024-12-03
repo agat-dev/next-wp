@@ -127,6 +127,8 @@ export async function getAllCategories(): Promise<Category[]> {
   return categories;
 }
 
+
+
 export async function getCategoryById(id: number): Promise<Category> {
   const url = getUrl(`/wp-json/wp/v2/categories/${id}`);
   const response = await fetch(url);

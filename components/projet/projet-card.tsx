@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Projet } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
+import dateFormat, { masks } from "dateformat";
 
 import {
   getFeaturedMediaById,
@@ -10,10 +11,12 @@ import {
 } from "@/lib/wordpress";
 
 export default async function ProjetCard({ post }: { post: Projet }) {
-  const media = await getFeaturedMediaById(post.featured_media);
-  const date = new Date(post.date).toLocaleDateString("en-US", {
+  const media = await getFeaturedMediaById(post.acf.screen);
+  const projetDate = post.acf.date_de_sortie;
+  const projetYear = parseInt(projetDate.slice(0, 4), 10);
+  const projetMonth = parseInt(projetDate.slice(4, 6), 10);
+  const date = new Date(projetYear, projetMonth).toLocaleDateString("fr-FR", {
     month: "long",
-    day: "numeric",
     year: "numeric",
   });
   const category = await getCategoryById(post.categories[0]);
@@ -47,7 +50,6 @@ export default async function ProjetCard({ post }: { post: Projet }) {
       <div className="flex flex-col gap-4">
         <hr />
         <div className="flex justify-between items-center text-xs">
-          <p>{category.name}</p>
           <p>{date}</p>
         </div>
       </div>
