@@ -9,6 +9,7 @@ import {
   Projet,
   Techno,
   Category,
+  Reference,
   Tag,
   Page,
   Author,
@@ -326,3 +327,23 @@ export async function getFeaturedMediaById(id: number): Promise<FeaturedMedia> {
   const featuredMedia: FeaturedMedia = await response.json();
   return featuredMedia;
 }
+
+
+/* ajout récup logos clients */
+
+export async function getAllReferences(filterParams?: {
+  author?: string;
+  tag?: string;
+  category?: string;
+}): Promise<Reference[]> {
+  const url = getUrl("/wp-json/wp/v2/reference", {
+    author: filterParams?.author,
+    tags: filterParams?.tag,
+    categories: filterParams?.category,
+  });
+  const response = await fetch(url);
+  const references: Techno[] = await response.json();
+  return references;
+}
+
+/* end ajout récup clients */

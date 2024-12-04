@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
+
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -12,7 +14,7 @@ const config = {
   prefix: "",
   theme: {
   	container: {
-  		center: true,
+  		center: 'true',
   		padding: '0rem',
   		screens: {
   			'2xl': '1400px'
@@ -23,12 +25,12 @@ const config = {
   			sans: ["var(--font-sans)", ...fontFamily.sans]
   		},
   		colors: {
-			agatlightpink: '#F2798F',
-			agatmediumpink: '#F2385A',
-			agatdarkpink: '#BF1B39',
-			agatlightgrey: '#F2F2F2',
-			agatblack: '#0D0D0D',
-			border: 'hsl(var(--border))',
+  			agatlightpink: '#F2798F',
+  			agatmediumpink: '#F2385A',
+  			agatdarkpink: '#BF1B39',
+  			agatlightgrey: '#F2F2F2',
+  			agatblack: '#0D0D0D',
+  			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
   			background: 'hsl(var(--background))',
@@ -83,11 +85,29 @@ const config = {
   				to: {
   					height: '0'
   				}
+  			},
+  			marquee: {
+  				from: {
+  					transform: 'translateX(0)'
+  				},
+  				to: {
+  					transform: 'translateX(calc(-100% - var(--gap)))'
+  				}
+  			},
+  			'marquee-vertical': {
+  				from: {
+  					transform: 'translateY(0)'
+  				},
+  				to: {
+  					transform: 'translateY(calc(-100% - var(--gap)))'
+  				}
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+  			marquee: 'marquee var(--duration) infinite linear',
+  			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
   		}
   	}
   },

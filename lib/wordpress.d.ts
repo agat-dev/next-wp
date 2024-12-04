@@ -138,6 +138,54 @@ export type Techno = {
 
 /* end Ajouts technos */
 
+/* Ajouts reference */
+
+export type Reference = {
+  id: number;
+  date: string;
+  date_gmt: string;
+  guid: {
+    rendered: string;
+  };
+  modified: string;
+  modified_gmt: string;
+  slug: string;
+  status: "publish" | "future" | "draft" | "pending" | "private";
+  type: string;
+  link: string;
+  title: {
+    rendered: string;
+  };
+  acf: {
+			avis: string;
+			nom_du_client: string;
+			url_client: string;
+      projet_en_lien: number;
+		},
+  author: number;
+  featured_media: number;
+  comment_status: "open" | "closed";
+  ping_status: "open" | "closed";
+  sticky: boolean;
+  template: string;
+  format:
+    | "standard"
+    | "aside"
+    | "chat"
+    | "gallery"
+    | "link"
+    | "image"
+    | "quote"
+    | "status"
+    | "video"
+    | "audio";
+  meta: any[];
+  categories: number[];
+  tags: number[];
+};
+/* end Ajouts reference */
+
+
 
 export type Category = {
   id: number;
@@ -197,6 +245,19 @@ export type Page = {
 };
 
 export type Author = {
+  id: number;
+  name: string;
+  url: string;
+  description: string;
+  link: string;
+  slug: string;
+  avatar_urls: {
+    [key: string]: string;
+  };
+  meta: any[];
+};
+
+export type DateProjet = {
   id: number;
   name: string;
   url: string;
