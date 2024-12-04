@@ -71,7 +71,7 @@ type SectionProps = {
 
 const Section = ({ children, className, id }: SectionProps) => {
   return (
-    <section className={cn("py-8 md:py-12 fade-in", className)} id={id}>
+    <section className={cn("py-4 md:py-8 fade-in", className)} id={id}>
       {children}
     </section>
   );
@@ -86,7 +86,7 @@ type ContainerProps = {
 
 const Container = ({ children, className, id }: ContainerProps) => {
   return (
-    <div className={cn("mx-auto max-w-screen-xl", "p-4 sm:p-8", "bg-white", className)} id={id}>
+    <div className={cn("mx-auto my-10 max-w-screen-xl", "p-2 sm:p-4", className)} id={id}>
       {children}
     </div>
   );
@@ -136,5 +136,7 @@ const Article = ({
     </article>
   );
 };
+
+
 
 export { Layout, Main, Section, Container, Article };

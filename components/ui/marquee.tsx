@@ -51,12 +51,11 @@ export default function Marquee({
 }
 
  
-const ReviewCard = ({
+
+const ReviewCardTechnos = ({
   img,
 }: {
   img: string;
-  name: string;
-  username: string;
 }) => {
   return (
     <figure
@@ -70,11 +69,9 @@ const ReviewCard = ({
     >
       <div className="flex flex-col items-center">
         <img className="m-1 object-contain	" width="64" height="64" alt="" src={img} />
-        <div className="flex flex-col">
-        </div>
       </div>
     </figure>
   );
 };
  
-export { ReviewCard };
+export { ReviewCardTechnos };

@@ -342,7 +342,7 @@ export async function getAllReferences(filterParams?: {
     categories: filterParams?.category,
   });
   const response = await fetch(url);
-  const references: Techno[] = await response.json();
+  const references: Reference[] = await response.json();
   return references;
 }
 

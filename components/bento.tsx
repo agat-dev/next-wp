@@ -25,10 +25,10 @@ const BentoCard = ({
   background,
   description,
 }: {
-  name: string;
+  name?: string;
   className: string;
   background: ReactNode;
-  description: string;
+  description?: string;
 }) => (
   <div
     key={name}
@@ -59,6 +59,8 @@ const BentoCard = ({
   </div>
 );
 
+
+
 export const HoverEffectBento = ({
     items,
     className,
@@ -77,7 +79,7 @@ export const HoverEffectBento = ({
     return (
       <div
         className={cn(
-          "grid w-full auto-rows-[16rem] grid-cols-6",
+          "grid w-full auto-rows-[8rem] grid-cols-6 ",
           className
         )}
       >

@@ -7,40 +7,12 @@ import { HoverEffectBento } from "@/components/bento";
 import Link from "next/link";
 import Image from "next/image";
 import Marquee from "@/components/ui/marquee";
-import { ReviewCard } from "@/components/ui/marquee";
+import { ReviewCardTechnos } from "@/components/ui/marquee";
 import { cn } from "@/lib/utils";
 
 // Datas
 import { getAllReferences, getAllTechnos, getFeaturedMediaById } from "@/lib/wordpress";
 
-export async function LogosReferencesVertical() {
-  const references = await getAllReferences();
-  const referencesWithMedia = await Promise.all(
-    references.map(async (reference: any) => {
-      const media = await getFeaturedMediaById(reference.featured_media);      
-      return {
-        ...reference,
-        link: media ? media.source_url : '',
-      };
-    })
-  );
-  const refs = referencesWithMedia.map((reference: any) => ({
-      name: reference.name,
-      username: reference.title.rendered,
-      img: reference.link || "https://avatar.vercel.sh/default",
-    }));
-    return (
-      <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
-        <Marquee pauseOnHover vertical className="[--duration:20s]">
-          {refs.map((ref) => (
-            <ReviewCard key={ref.username} {...ref} />
-          ))}
-        </Marquee>
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div>
-      </div>
-    );
-}
 
 export async function LogosTechnosVertical() {
   const technos = await getAllTechnos();
@@ -59,14 +31,12 @@ export async function LogosTechnosVertical() {
       img: techno.link || "https://avatar.vercel.sh/default",
     }));
     return (
-      <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+      <div className="relative flex h-max-content w-full flex-row items-center justify-center overflow-hidden">
         <Marquee pauseOnHover vertical className="[--duration:20s]">
           {reviews.map((review) => (
-            <ReviewCard key={review.username} {...review} />
+            <ReviewCardTechnos key={review.username} {...review} />
           ))}
         </Marquee>
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div>
       </div>
     );
 }
@@ -99,7 +69,7 @@ const ExampleJsx = () => {
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/projet",
             background: "",
-            classNameLink: "lg:col-span-3 lg:row-span-2",
+            classNameLink: "lg:col-span-3 lg:row-span-3",
           },
           {
             title: "WordPress & Développement",
@@ -107,24 +77,47 @@ const ExampleJsx = () => {
               "Learn how to use the components and features of this starter.",
             link: "https://agat.dev",
             background: "",
-            classNameLink: "lg:col-span-2",
+            classNameLink: "lg:col-span-2 lg:row-span-2",
           },
           {
             title: "Design & Maquettes",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/services",
-            background: <LogosReferencesVertical />,
-            classNameLink: "lg:col-span-1 lg:row-span-2",
+            background: <LogosTechnosVertical />,
+            classNameLink: "lg:col-span-1 lg:row-span-6",
           },
-          
           {
-            title: "Design & Maquettes",
+            title: "Processus projet",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/services",
             background: "",
-            classNameLink: "lg:col-span-2",
+            classNameLink: "lg:col-span-2 lg:row-span-2",
+          },
+          {
+            title: "Déjà réalisés",
+            description:
+              "Learn how to use this starter and build your WordPress site with Next.js.",
+            link: "/projet",
+            background: "",
+            classNameLink: "lg:col-span-2 lg:row-span-2",
+          },
+          {
+            title: "Blog",
+            description:
+              "Learn how to use this starter and build your WordPress site with Next.js.",
+            link: "/posts",
+            background: "",
+            classNameLink: "lg:col-span-2 lg:row-span-2",
+          },
+          {
+            title: "",
+            description:
+              "",
+            link: "/reference",
+            background: "",
+            classNameLink: "lg:col-span-6 lg:row-span-1 items-center",
           },
 
       ]}
