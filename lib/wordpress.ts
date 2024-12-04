@@ -7,6 +7,7 @@ import querystring from "query-string";
 import {
   Post,
   Projet,
+  Techno,
   Category,
   Tag,
   Page,
@@ -85,7 +86,39 @@ export async function getProjetBySlug(slug: string): Promise<Projet> {
   return projet[0];
 }
 
-/* end ajout projet */
+/* end ajout projets */
+
+/* Ajouts technos */
+
+export async function getAllTechnos(filterParams?: {
+  author?: string;
+  tag?: string;
+  category?: string;
+}): Promise<Techno[]> {
+  const url = getUrl("/wp-json/wp/v2/techno", {
+    author: filterParams?.author,
+    tags: filterParams?.tag,
+    categories: filterParams?.category,
+  });
+  const response = await fetch(url);
+  const technos: Techno[] = await response.json();
+  return technos;
+}
+
+export async function getTechnoById(id: number): Promise<Techno> {
+  const url = getUrl(`/wp-json/wp/v2/techno/${id}`);
+  const response = await fetch(url);
+  const techno: Techno = await response.json();
+  return techno;
+}
+
+export async function getTechnoBySlug(slug: string): Promise<Techno> {
+  const url = getUrl("/wp-json/wp/v2/techno", { slug });
+  const response = await fetch(url);
+  const techno: Techno[] = await response.json();
+  return techno[0];
+}
+/* end ajout technos */
 
 export async function getAllCategories(): Promise<Category[]> {
   const url = getUrl("/wp-json/wp/v2/categories");
@@ -136,6 +169,24 @@ export async function getProjetsByTag(tagId: number): Promise<Projet[]> {
   const response = await fetch(url);
   const projets: Projet[] = await response.json();
   return projets;
+}
+
+/* end ajout projets */
+
+/* ajout technos */
+
+export async function getTechnosByCategory(categoryId: number): Promise<Techno[]> {
+  const url = getUrl("/wp-json/wp/v2/techno", { categories: categoryId });
+  const response = await fetch(url);
+  const technos: Techno[] = await response.json();
+  return technos;
+}
+
+export async function getTechnosByTag(tagId: number): Promise<Techno[]> {
+  const url = getUrl("/wp-json/wp/v2/techno", { tags: tagId });
+  const response = await fetch(url);
+  const technos: Techno[] = await response.json();
+  return technos;
 }
 
 /* end ajout projets */
@@ -244,6 +295,28 @@ export async function getPostsByTagSlug(tagSlug: string): Promise<Post[]> {
   const posts: Post[] = await response.json();
   return posts;
 }
+
+/* ajout projets */
+
+export async function getProjetsByCategorySlug(
+  categorySlug: string
+): Promise<Projet[]> {
+  const category = await getCategoryBySlug(categorySlug);
+  const url = getUrl("/wp-json/wp/v2/projet", { categories: category.id });
+  const response = await fetch(url);
+  const projets: Projet[] = await response.json();
+  return projets;
+}
+
+export async function getProjetsByTagSlug(tagSlug: string): Promise<Projet[]> {
+  const tag = await getTagBySlug(tagSlug);
+  const url = getUrl("/wp-json/wp/v2/projet", { tags: tag.id });
+  const response = await fetch(url);
+  const projets: Projet[] = await response.json();
+  return projets;
+}
+
+/* end ajout projets */
 
 export async function getFeaturedMediaById(id: number): Promise<FeaturedMedia> {
   const url = getUrl(`/wp-json/wp/v2/media/${id}`);

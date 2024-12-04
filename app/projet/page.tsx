@@ -1,22 +1,100 @@
-import { getAllProjets } from "@/lib/wordpress";
-import { Section, Container } from "@/components/craft";
-import Link from "next/link";
+import {
+  getAllProjets,
+  getAllAuthors,
+  getAllTags,
+  getAllCategories,
+} from "@/lib/wordpress";
 
-export default async function Projet() {
-  const pages = await getAllProjets();
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+import { Section, Container } from "@/components/craft";
+import ProjetCard from "@/components/projet/projet-card";
+import FilterPosts from "./filter";
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
+  const { author, tag, category, page: pageParam } = searchParams;
+  const projets = await getAllProjets({ author, tag, category });
+  const authors = await getAllAuthors();
+  const tags = await getAllTags();
+  const categories = await getAllCategories();
+
+  const page = pageParam ? parseInt(pageParam, 10) : 1;
+  const projetsPerPage = 9;
+  const totalPages = Math.ceil(projets.length / projetsPerPage);
+
+  const paginatedProjets = projets.slice(
+    (page - 1) * projetsPerPage,
+    page * projetsPerPage
+  );
 
   return (
     <Section>
       <Container>
         <h1>Projets</h1>
+        <FilterPosts
+          authors={authors}
+          tags={tags}
+          categories={categories}
+          selectedAuthor={author}
+          selectedTag={tag}
+          selectedCategory={category}
+        />
 
-        <h2>Tous les projets</h2>
-        <div className="grid">
-          {pages.map((page: any) => (
-            <Link key={page.id} href={`projet/${page.slug}`}>
-              {page.title.rendered}
-            </Link>
-          ))}
+        {paginatedProjets.length > 0 ? (
+          <div className="grid md:grid-cols-3 gap-4 z-0">
+            {paginatedProjets.map((projet: any) => (
+              <ProjetCard key={projet.id} post={projet} />
+            ))}
+          </div>
+        ) : (
+          <div className="h-24 w-full border rounded-lg bg-accent/25 flex items-center justify-center">
+            <p>No Results Found</p>
+          </div>
+        )}
+
+        <div className="mt-8 not-prose">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  className={page === 1 ? "pointer-events-none text-muted" : ""}
+                  href={`/projet?page=${Math.max(page - 1, 1)}${
+                    category ? `&category=${category}` : ""
+                  }${author ? `&author=${author}` : ""}${
+                    tag ? `&tag=${tag}` : ""
+                  }`}
+                />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href={`/projet?page=${page}`}>
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext
+                  className={
+                    page === totalPages ? "pointer-events-none text-muted" : ""
+                  }
+                  href={`/posts?page=${Math.min(page + 1, totalPages)}${
+                    category ? `&category=${category}` : ""
+                  }${author ? `&author=${author}` : ""}${
+                    tag ? `&tag=${tag}` : ""
+                  }`}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
         </div>
       </Container>
     </Section>

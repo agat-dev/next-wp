@@ -1,50 +1,58 @@
 
-interface DotPatternBackgroundProps {
-    dotSize?: number
-    dotColor?: string
-    backgroundColor?: string
-    gap?: number
-    maskColor?: string
-    className?: string
-    style?: React.CSSProperties
-    fade?: boolean
-    [key: string]: any
-  }
-  
-  export const BackgroundDots: React.FC<DotPatternBackgroundProps> = ({
-    dotSize = 0.5,
-    dotColor = '#f2f2f2',
-    backgroundColor = 'transparent',
-    gap = 10,
-    className,
-    fade = true,
-    style,
-    ...props
-  }) => {
-    const encodedDotColor = encodeURIComponent(dotColor)
-  
-    const maskStyle: React.CSSProperties = fade
-      ? {
-          maskImage: 'radial-gradient(circle, white 10%, transparent 90%)',
-          WebkitMaskImage: 'radial-gradient(circle, white 10%, transparent 90%)',
-        }
-      : {}
-  
-    //  SVG taken from https://heropatterns.com/
-    const backgroundStyle: React.CSSProperties = {
-      backgroundColor,
-      backgroundImage: `url("data:image/svg+xml,%3Csvg width='${gap}' height='${gap}' viewBox='0 0 ${gap} ${gap}' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='${encodedDotColor}' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='${dotSize}' cy='${dotSize}' r='${dotSize}'/%3E%3C/g%3E%3C/svg%3E")`,
-      ...maskStyle,
-      ...style,
-    }
-  
-    return (
-      <div
-        className={`absolute inset-0 h-24 w-full ${className}`}
-        style={backgroundStyle}
-        {...props}
-      />
-    )
-  }
-  
-  export default BackgroundDots
+import { useId } from "react";
+
+import { cn } from "@/lib/utils";
+
+interface DotPatternProps {
+  width?: any;
+  height?: any;
+  x?: any;
+  y?: any;
+  cx?: any;
+  cy?: any;
+  cr?: any;
+  className?: string;
+  [key: string]: any;
+}
+export function DotPattern({
+  width = 16,
+  height = 16,
+  x = 0,
+  y = 0,
+  cx = 0.4,
+  cy = 0.4,
+  cr = 0.4,
+  className,
+  ...props
+}: DotPatternProps) {
+  const id = useId();
+
+  return (
+    <svg
+      aria-hidden="true"
+      className={cn(
+        "pointer-events-none absolute inset-0 h-full w-full fill-agatmediumpink",
+        className,
+      )}
+      {...props}
+    >
+      <defs>
+        <pattern
+          id={id}
+          width={width}
+          height={height}
+          patternUnits="userSpaceOnUse"
+          patternContentUnits="userSpaceOnUse"
+          x={x}
+          y={y}
+        >
+          <circle id="pattern-circle" cx={cx} cy={cy} r={cr} />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
+    </svg>
+  );
+}
+
+export { DotPattern as DotBg };
+
