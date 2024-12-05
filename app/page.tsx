@@ -5,33 +5,33 @@ import { HoverEffectBento } from "@/components/bento";
 
 // Components
 import Marquee from "@/components/ui/marquee";
-import { ReviewCardTechnos } from "@/components/ui/marquee";
+import { ReviewCardReferences } from "@/components/ui/marquee";
 
 // Datas
-import { getAllTechnos, getFeaturedMediaById } from "@/lib/wordpress";
+import { getAllReferences, getFeaturedMediaById } from "@/lib/wordpress";
 
 
-async function LogosTechnosVertical() {
-  const technos = await getAllTechnos();
-  const technosWithMedia = await Promise.all(
-    technos.map(async (techno: any) => {
-      const media = await getFeaturedMediaById(techno.featured_media);      
+async function LogosReferencesVertical() {
+  const references = await getAllReferences();
+  const referencesWithMedia = await Promise.all(
+    references.map(async (reference: any) => {
+      const media = await getFeaturedMediaById(reference.featured_media);      
       return {
-        ...techno,
+        ...reference,
         link: media ? media.source_url : '',
       };
     })
   );
-  const reviews = technosWithMedia.map((techno: any) => ({
-      name: techno.name,
-      username: `${techno.slug}`,
-      img: techno.link || "https://avatar.vercel.sh/default",
+  const reviews = referencesWithMedia.map((reference: any) => ({
+      name: reference.name,
+      username: `${reference.slug}`,
+      img: reference.link || "https://avatar.vercel.sh/default",
     }));
     return (
       <div className="relative flex h-max-content w-full flex-row items-center justify-center overflow-hidden">
         <Marquee pauseOnHover vertical className="[--duration:20s]">
           {reviews.map((review) => (
-            <ReviewCardTechnos key={review.username} {...review} />
+            <ReviewCardReferences key={review.username} {...review} />
           ))}
         </Marquee>
       </div>
@@ -77,28 +77,27 @@ const ExampleJsx = () => {
             classNameLink: "lg:col-span-2 lg:row-span-2",
           },
           {
-            title: "Design & Maquettes",
-            description:
-              "Learn how to use this starter and build your WordPress site with Next.js.",
-            link: "/services",
-            background: <LogosTechnosVertical />,
-            classNameLink: "lg:col-span-1 lg:row-span-6",
+            title: "Logos technos",
+            description:"",
+            link: "/reference",
+            background: <LogosReferencesVertical />,
+            classNameLink: "lg:col-span-1 lg:row-span-7",
           },
           {
-            title: "Processus projet",
-            description:
-              "Learn how to use this starter and build your WordPress site with Next.js.",
-            link: "/services",
-            background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-2",
-          },
-          {
-            title: "Déjà réalisés",
+            title: "Projets réalisés",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/projet",
             background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-2",
+            classNameLink: "lg:col-span-2 lg:row-span-3",
+          },
+          {
+            title: "Processus de travail",
+            description:
+              "Learn how to use this starter and build your WordPress site with Next.js.",
+            link: "/projet",
+            background: "",
+            classNameLink: "lg:col-span-2 lg:row-span-3",
           },
           {
             title: "Blog",
@@ -106,15 +105,23 @@ const ExampleJsx = () => {
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/posts",
             background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-2",
+            classNameLink: "lg:col-span-3 lg:row-span-2",
           },
           {
-            title: "",
+            title: "Technos",
+            description:
+              "",
+            link: "/techno",
+            background: "",
+            classNameLink: "lg:col-span-2 lg:row-span-2 items-center",
+          },
+          {
+            title: "Footer",
             description:
               "",
             link: "/reference",
             background: "",
-            classNameLink: "lg:col-span-6 lg:row-span-1 items-center",
+            classNameLink: "lg:col-span-4 lg:row-span-1 items-center",
           },
 
       ]}

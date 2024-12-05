@@ -52,7 +52,7 @@ export default function Marquee({
 
  
 
-const ReviewCardTechnos = ({
+const ReviewCardReferences = ({
   img,
 }: {
   img: string;
@@ -74,4 +74,4 @@ const ReviewCardTechnos = ({
   );
 };
  
-export { ReviewCardTechnos };
+export { ReviewCardReferences };
