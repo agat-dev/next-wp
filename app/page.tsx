@@ -11,7 +11,7 @@ import { ReviewCardTechnos } from "@/components/ui/marquee";
 import { getAllTechnos, getFeaturedMediaById } from "@/lib/wordpress";
 
 
-function LogosTechnosVertical() {
+async function LogosTechnosVertical() {
   const technos = await getAllTechnos();
   const technosWithMedia = await Promise.all(
     technos.map(async (techno: any) => {
