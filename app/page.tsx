@@ -4,17 +4,14 @@ import { HoverEffectBento } from "@/components/bento";
 //import Balancer from "react-wrap-balancer";
 
 // Components
-import Link from "next/link";
-import Image from "next/image";
 import Marquee from "@/components/ui/marquee";
 import { ReviewCardTechnos } from "@/components/ui/marquee";
-import { cn } from "@/lib/utils";
 
 // Datas
-import { getAllReferences, getAllTechnos, getFeaturedMediaById } from "@/lib/wordpress";
+import { getAllTechnos, getFeaturedMediaById } from "@/lib/wordpress";
 
 
-export async function LogosTechnosVertical() {
+function LogosTechnosVertical() {
   const technos = await getAllTechnos();
   const technosWithMedia = await Promise.all(
     technos.map(async (techno: any) => {
