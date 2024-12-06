@@ -29,7 +29,7 @@ async function LogosReferencesVertical() {
     }));
     return (
       <div className="relative flex h-max-content w-full flex-row items-center justify-center overflow-hidden">
-        <Marquee pauseOnHover vertical className="[--duration:20s]">
+        <Marquee pauseOnHover vertical className="[--duration:40s]">
           {reviews.map((review) => (
             <ReviewCardReferences key={review.username} {...review} />
           ))}
@@ -100,7 +100,7 @@ const ExampleJsx = () => {
             classNameLink: "lg:col-span-2 lg:row-span-3",
           },
           {
-            title: "Blog",
+            title: "Témoignages",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/posts",
@@ -108,12 +108,20 @@ const ExampleJsx = () => {
             classNameLink: "lg:col-span-3 lg:row-span-2",
           },
           {
+            title: "Blog",
+            description:
+              "",
+            link: "/posts",
+            background: "",
+            classNameLink: "lg:col-span-2 lg:row-span-2 items-center",
+          },
+          {
             title: "Technos",
             description:
               "",
-            link: "/techno",
+            link: "/reference",
             background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-2 items-center",
+            classNameLink: "lg:col-span-4 lg:row-span-1 items-center",
           },
           {
             title: "Footer",
@@ -121,9 +129,8 @@ const ExampleJsx = () => {
               "",
             link: "/reference",
             background: "",
-            classNameLink: "lg:col-span-4 lg:row-span-1 items-center",
+            classNameLink: "lg:col-span-6 lg:row-span-1 items-center",
           },
-
       ]}
       />
 

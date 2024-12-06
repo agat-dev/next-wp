@@ -23,7 +23,7 @@ export default function Marquee({
     <div
       {...props}
       className={cn(
-        "group flex items-center overflow-hidden p-2 [--duration:40s] [--gap:.5rem] [gap:var(--gap)]",
+        "group flex items-center overflow-hidden p-2 [--duration:200s] [--gap:.5rem] [gap:var(--gap)]",
         {
           "flex-row": !vertical,
           "flex-col": vertical,
@@ -60,15 +60,15 @@ const ReviewCardReferences = ({
   return (
     <figure
       className={cn(
-        "relative w-10/12 cursor-pointer overflow-hidden rounded-xl border p-2 m-1",
+        "relative justify-center flex items-center w-full h-24 cursor-pointer overflow-hidden rounded-xl border p-1 m-1",
         // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        "border-white-950/[.1] bg-white-950/[.01] hover:bg-white-950/[.05]",
         // dark styles
         "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
       )}
     >
       <div className="flex flex-col items-center">
-        <img className="m-1 object-contain	" width="64" height="64" alt="" src={img} />
+        <img className="m-1 object-contain" width="80" height="80" alt="" src={img} />
       </div>
     </figure>
   );

@@ -17,6 +17,7 @@ import Logo from "@/public/logo.svg";
 
 
 import { cn } from "@/lib/utils";
+import { getPostBySlug } from "@/lib/wordpress";
 
 const fontSans = FontSans({
   subsets: ["latin"],

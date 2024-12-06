@@ -78,6 +78,9 @@ export const Menu = ({
   );
 };
 
+
+
+
 export const ProductItem = ({
   title,
   description,
@@ -131,7 +134,7 @@ export default function Navbar({ className }: { className?: string }) {
 
         <MenuItem setActive={setActive} active={active} item="Votre besoin">
           <div className="flex flex-col space-y-4 text-sm">      
-          <HoveredLink href="/web-dev">Créer mon site</HoveredLink>               
+          <HoveredLink href="/pages/votre-creation">Créer un site web</HoveredLink>               
             <HoveredLink href="/web-dev">Transformer mon site</HoveredLink>                     
             <HoveredLink href="/seo">Auditer mon site</HoveredLink>               
           </div>
