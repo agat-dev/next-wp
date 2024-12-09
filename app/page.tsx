@@ -40,7 +40,7 @@ async function LogosReferencesVertical() {
     );
 }
 
-export function CardStackDemo() {
+async function CardStackDemo() {
   return (
     <div className="h-[24rem] flex items-center justify-center w-full">
       <CardStack items={CARDS} />
@@ -48,7 +48,7 @@ export function CardStackDemo() {
   );
 }
 // Small utility to highlight the content of specific section of a testimonial content
-export const Highlight = ({
+const Highlight = ({
   children,
   className,
 }: {
