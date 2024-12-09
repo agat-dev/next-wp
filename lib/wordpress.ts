@@ -9,6 +9,7 @@ import {
   Projet,
   Techno,
   Category,
+  Annee,
   Reference,
   Tag,
   Page,
@@ -160,15 +161,45 @@ export async function getPostsByTag(tagId: number): Promise<Post[]> {
 
 /* ajout projets */
 
+export async function getAllAnnees(): Promise<Annee[]> {
+  const url = getUrl("/wp-json/wp/v2/annee");
+  const response = await fetch(url);
+  const annees: Annee[] = await response.json();
+  return annees;
+}
+
+
+export async function getAnneeById(id: number): Promise<Annee> {
+  const url = getUrl(`/wp-json/wp/v2/annee/${id}`);
+  const response = await fetch(url);
+  const annee: Annee = await response.json();
+  return annee;
+}
+
+export async function getAnneeBySlug(slug: string): Promise<Annee> {
+  const url = getUrl("/wp-json/wp/v2/annee", { slug });
+  const response = await fetch(url);
+  const annee: Annee[] = await response.json();
+  return annee[0];
+}
+
+export async function getProjetByAnnee(anneeId: number): Promise<Projet[]> {
+  const url = getUrl("/wp-json/wp/v2/projet", { annee: anneeId });
+  const response = await fetch(url);
+  const projets: Projet[] = await response.json();
+  return projets;
+}
+
+
 export async function getProjetByCategory(categoryId: number): Promise<Projet[]> {
-  const url = getUrl("/wp-json/wp/v2/projets", { categories: categoryId });
+  const url = getUrl("/wp-json/wp/v2/projet", { categories: categoryId });
   const response = await fetch(url);
   const projets: Projet[] = await response.json();
   return projets;
 }
 
 export async function getProjetsByTag(tagId: number): Promise<Projet[]> {
-  const url = getUrl("/wp-json/wp/v2/projets", { tags: tagId });
+  const url = getUrl("/wp-json/wp/v2/projet", { tags: tagId });
   const response = await fetch(url);
   const projets: Projet[] = await response.json();
   return projets;

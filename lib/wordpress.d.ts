@@ -71,6 +71,7 @@ export type Projet = {
 			screen: number;
 			video: number;
 		},
+  annee: number[];
   author: number;
   featured_media: number;
   comment_status: "open" | "closed";
@@ -195,6 +196,18 @@ export type Category = {
   name: string;
   slug: string;
   taxonomy: "category";
+  parent: number;
+  meta: any[];
+};
+
+export type Annee = {
+  id: number;
+  count: number;
+  description: string;
+  link: string;
+  name: string;
+  slug: string;
+  taxonomy: "annee";
   parent: number;
   meta: any[];
 };

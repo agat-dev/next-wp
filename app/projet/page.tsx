@@ -3,6 +3,7 @@ import {
   getAllAuthors,
   getAllTags,
   getAllCategories,
+  getAllAnnees,
 } from "@/lib/wordpress";
 
 import {
@@ -23,19 +24,19 @@ export default async function Page({
 }: {
   searchParams: { [key: string]: string | undefined };
 }) {
-  const { author, tag, category, page: pageParam } = searchParams;
-  const projets = await getAllProjets({ author, tag, category });
+  const { author, tag, category, annee, page: pageParam } = searchParams;
+  const posts = await getAllProjets({ author, tag, category });
   const authors = await getAllAuthors();
   const tags = await getAllTags();
   const categories = await getAllCategories();
-
+  const annees = await getAllAnnees();
   const page = pageParam ? parseInt(pageParam, 10) : 1;
-  const projetsPerPage = 9;
-  const totalPages = Math.ceil(projets.length / projetsPerPage);
+  const postsPerPage = 9;
+  const totalPages = Math.ceil(posts.length / postsPerPage);
 
-  const paginatedProjets = projets.slice(
-    (page - 1) * projetsPerPage,
-    page * projetsPerPage
+  const paginatedPosts = posts.slice(
+    (page - 1) * postsPerPage,
+    page * postsPerPage
   );
 
   return (
@@ -43,16 +44,20 @@ export default async function Page({
       <Container>
         <h1>Projets</h1>
         <FilterPosts
+          authors={authors}
           tags={tags}
           categories={categories}
+          annees={annees}
+          selectedAuthor={author}
           selectedTag={tag}
           selectedCategory={category}
+          selectedAnnee={annee}
         />
 
-        {paginatedProjets.length > 0 ? (
+        {paginatedPosts.length > 0 ? (
           <div className="grid md:grid-cols-3 gap-4 z-0">
-            {paginatedProjets.map((projet: any) => (
-              <ProjetCard key={projet.id} post={projet} />
+            {paginatedPosts.map((projet: any) => (
+              <ProjetCard key={projet.id} projet={projet} />
             ))}
           </div>
         ) : (
@@ -61,7 +66,7 @@ export default async function Page({
           </div>
         )}
 
-        <div className="mt-8 not-prose">
+        <div className="mt-8 not-prose"> 
           <Pagination>
             <PaginationContent>
               <PaginationItem>
@@ -69,13 +74,13 @@ export default async function Page({
                   className={page === 1 ? "pointer-events-none text-muted" : ""}
                   href={`/projet?page=${Math.max(page - 1, 1)}${
                     category ? `&category=${category}` : ""
-                  }${author ? `&author=${author}` : ""}${
+                  }${author ? `&author=${author}` : ""}${annee ? `&annee=${annee}` : ""}${
                     tag ? `&tag=${tag}` : ""
                   }`}
                 />
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href={`/projet?page=${page}`}>
+                <PaginationLink href={`/posts?page=${page}`}>
                   {page}
                 </PaginationLink>
               </PaginationItem>
@@ -84,9 +89,9 @@ export default async function Page({
                   className={
                     page === totalPages ? "pointer-events-none text-muted" : ""
                   }
-                  href={`/posts?page=${Math.min(page + 1, totalPages)}${
+                  href={`/projet?page=${Math.min(page + 1, totalPages)}${
                     category ? `&category=${category}` : ""
-                  }${author ? `&author=${author}` : ""}${
+                  }${author ? `&author=${author}` : ""}${annee ? `&annee=${annee}` : ""}${
                     tag ? `&tag=${tag}` : ""
                   }`}
                 />

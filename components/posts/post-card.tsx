@@ -13,7 +13,6 @@ import {
 export default async function PostCard({ post }: { post: Post }) {
   const media = await getFeaturedMediaById(post.featured_media); 
   const mediaUrl = media.source_url;
-  console.log(mediaUrl);
   const date = new Date(post.date).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",

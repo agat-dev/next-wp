@@ -105,7 +105,7 @@ const ExampleJsx = () => {
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/posts",
             background: "",
-            classNameLink: "lg:col-span-3 lg:row-span-2",
+            classNameLink: "lg:col-span-3 lg:row-span-3",
           },
           {
             title: "Blog",

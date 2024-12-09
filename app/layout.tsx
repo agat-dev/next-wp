@@ -9,15 +9,12 @@ import "./globals.css";
 import { MobileNav } from "@/components/nav/mobile-nav";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Main } from "@/components/craft";
-//import { Section, Container } from "@/components/craft";
-//import Balancer from "react-wrap-balancer";
 import NavBar from "@/components/ui/navbar-menu";
  
 import Logo from "@/public/logo.svg";
 
 
 import { cn } from "@/lib/utils";
-import { getPostBySlug } from "@/lib/wordpress";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -41,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <head />
       <body
         className={cn("min-h-screen font-sans antialiased", fontSans.variable)}
@@ -52,6 +49,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+      
             <NavBar />       
             <MobileNav /> 
           <Main>{children}</Main>

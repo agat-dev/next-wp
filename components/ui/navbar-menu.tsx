@@ -44,7 +44,7 @@ export const MenuItem = ({
               <motion.div
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
-                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl"
               >
                 <motion.div
                   layout // layout ensures smooth animation
@@ -134,34 +134,33 @@ export default function Navbar({ className }: { className?: string }) {
 
         <MenuItem setActive={setActive} active={active} item="Votre besoin">
           <div className="flex flex-col space-y-4 text-sm">      
-          <HoveredLink href="/pages/votre-creation">Créer un site web</HoveredLink>               
-            <HoveredLink href="/web-dev">Transformer mon site</HoveredLink>                     
-            <HoveredLink href="/seo">Auditer mon site</HoveredLink>               
+              <HoveredLink href="/pages/votre-creation">Créer une vitrine</HoveredLink> 
+              <HoveredLink href="/web-dev">Gérer une communauté</HoveredLink>                
           </div>
         </MenuItem>
 
         <MenuItem setActive={setActive} active={active} item="Nos services">
           <div className="  text-sm grid grid-cols-2 gap-10 p-4">
             <ProductItem
-              title="Créations sur-mesure"
+              title="Site vitrine"
               href="https://algochurn.com"
               src="https://assets.aceternity.com/demos/algochurn.webp"
               description="Prepare for tech interviews like never before."
             />
             <ProductItem
-              title="Refontes"
+              title="Portail d'information"
               href="https://tailwindmasterkit.com"
               src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
               description="Production ready Tailwind css components for your next project"
             />
             <ProductItem
-              title="Design & Maquettes"
+              title="Plateforme avec membres"
               href="https://gomoonbeam.com"
               src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
               description="Never write from scratch again. Go from idea to blog in minutes."
             />
             <ProductItem
-              title="Audits"
+              title="Audit & Optimisation"
               href="https://userogue.com"
               src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
               description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
@@ -173,14 +172,14 @@ export default function Navbar({ className }: { className?: string }) {
 
         <MenuItem setActive={setActive} active={active} item="Nos réalisations">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Projets</HoveredLink>
+            <HoveredLink href="/projet">Projets</HoveredLink>
             <HoveredLink href="/individual">Témoignages</HoveredLink>
           </div>
         </MenuItem>
 
-        <MenuItem setActive={setActive} active={active} item="Le projet">
+        <MenuItem setActive={setActive} active={active} item="Votre projet">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/seo">Processus de travail</HoveredLink>
+            <HoveredLink href="/seo">Méthode</HoveredLink>
             <HoveredLink href="/web-dev">Technos</HoveredLink>                      
             <HoveredLink href="/web-dev">Docs & Ressources</HoveredLink>    
           </div>
@@ -190,7 +189,7 @@ export default function Navbar({ className }: { className?: string }) {
         <MenuItem setActive={setActive} active={active} item="Plus">
           <div className="flex flex-col space-y-4 text-sm">              
             <HoveredLink href="/web-dev">A propos</HoveredLink>                     
-            <HoveredLink href="/seo">Blog</HoveredLink>               
+            <HoveredLink href="/posts">Blog</HoveredLink>               
           </div>
         </MenuItem>
       </Menu>

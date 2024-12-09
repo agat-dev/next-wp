@@ -10,7 +10,10 @@ import {
 } from "@/components/ui/select"; // Ensure this is the correct import path
 import { Button } from "@/components/ui/button"; // Add this import for the Button component
 
-
+interface Author {
+  id: number;
+  name: string;
+}
 
 interface Tag {
   id: number;
@@ -22,18 +25,31 @@ interface Category {
   name: string;
 }
 
+interface Annee {
+  id: number;
+  name: string;
+}
+
 interface FilterPostsProps {
+  authors: Author[];
   tags: Tag[];
   categories: Category[];
+  annees: Annee[];
+  selectedAuthor?: string;
   selectedTag?: string;
   selectedCategory?: string;
+  selectedAnnee?: number;
 }
 
 export default function FilterPosts({
+  authors,
   tags,
   categories,
+  annees,
+  selectedAuthor,
   selectedTag,
   selectedCategory,
+  selectedAnnee,
 }: FilterPostsProps) {
   const router = useRouter();
 
@@ -55,17 +71,17 @@ export default function FilterPosts({
   return (
     <div className="grid md:grid-cols-[1fr_1fr_1fr_0.5fr] gap-2 my-4 !z-10">
       <Select
-        value={selectedTag || "all"}
-        onValueChange={(value) => handleFilterChange("tag", value)}
+        value={selectedAnnee || "all"}
+        onValueChange={(value) => handleFilterChange("annee", value)}
       >
         <SelectTrigger>
-          <SelectValue placeholder="Toutes les catégories" />
+          <SelectValue placeholder="Années" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">Catégorie de projet</SelectItem>
-          {tags.map((tag) => (
-            <SelectItem key={tag.id} value={tag.id.toString()}>
-              {tag.name}
+          <SelectItem value="all">Années</SelectItem>
+          {annees.map((annee) => (
+            <SelectItem key={annee.id} value={annee.id.toString()}>
+              {annee.name}
             </SelectItem>
           ))}
         </SelectContent>
@@ -76,12 +92,12 @@ export default function FilterPosts({
         onValueChange={(value) => handleFilterChange("category", value)}
       >
         <SelectTrigger>
-          <SelectValue placeholder="Toutes les dates" />
+          <SelectValue placeholder="Type de projet" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">Date de réalisation</SelectItem>
+          <SelectItem value="all">Catégorie</SelectItem>
             {categories
-            .sort((a, b) => b.name.localeCompare(a.name))
+            .sort((a, b) => a.name.localeCompare(b.name))
             .map((category) => (
               <SelectItem key={category.id} value={category.id.toString()}>
               {category.name}

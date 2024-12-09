@@ -3,27 +3,22 @@ import Link from "next/link";
 
 import { Projet } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
-import dateFormat, { masks } from "dateformat";
-
 import {
   getFeaturedMediaById,
+  getAuthorById,
   getCategoryById,
+  getAnneeById,
 } from "@/lib/wordpress";
 
-export default async function ProjetCard({ post }: { post: Projet }) {
-  const media = await getFeaturedMediaById(post.acf.screen);
-  const projetDate = post.acf.date_de_sortie;
-  const projetYear = parseInt(projetDate.slice(0, 4), 10);
-  const projetMonth = parseInt(projetDate.slice(4, 6), 10);
-  const date = new Date(projetYear, projetMonth).toLocaleDateString("fr-FR", {
-    month: "long",
-    year: "numeric",
-  });
-  const category = await getCategoryById(post.categories[0]);
+export default async function ProjetCard({ projet }: { projet: Projet }) {
+  const media = await getFeaturedMediaById(projet.acf.screen); 
+  const mediaUrl = media.source_url;
+  const category = await getCategoryById(projet.categories[0]);
+  const annee = await getAnneeById(projet.annee[0]);
 
   return (
     <Link
-      href={`/projet/${post.slug}`}
+      href={`/projet/${projet.slug}`}
       className={cn(
         "border p-4 bg-accent/30 rounded-lg group flex justify-between flex-col not-prose gap-8",
         "hover:bg-accent/75 transition-all"
@@ -31,10 +26,10 @@ export default async function ProjetCard({ post }: { post: Projet }) {
     >
       <div className="flex flex-col gap-4">
         <div className="h-48 w-full overflow-hidden relative rounded-md border flex items-center justify-center">
-          <img src={media.source_url} alt={post.title.rendered} />
+          <img src={mediaUrl} alt={projet.title.rendered} />
           </div>
         <div
-          dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+          dangerouslySetInnerHTML={{ __html: projet.title.rendered }}
           className="text-xl text-primary font-medium group-hover:underline decoration-muted-foreground underline-offset-4 decoration-dotted transition-all"
         ></div>
         <div
@@ -50,9 +45,11 @@ export default async function ProjetCard({ post }: { post: Projet }) {
       <div className="flex flex-col gap-4">
         <hr />
         <div className="flex justify-between items-center text-xs">
-          <p>{date}</p>
+          <p>{category.name} | {annee.name}</p>
         </div>
       </div>
     </Link>
   );
 }
+
+
