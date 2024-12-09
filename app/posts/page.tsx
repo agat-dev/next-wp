@@ -28,7 +28,6 @@ export default async function Page({
   const authors = await getAllAuthors();
   const tags = await getAllTags();
   const categories = await getAllCategories();
-
   const page = pageParam ? parseInt(pageParam, 10) : 1;
   const postsPerPage = 9;
   const totalPages = Math.ceil(posts.length / postsPerPage);
