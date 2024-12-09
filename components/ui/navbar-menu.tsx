@@ -135,7 +135,7 @@ export default function Navbar({ className }: { className?: string }) {
         <MenuItem setActive={setActive} active={active} item="Votre besoin">
           <div className="flex flex-col space-y-4 text-sm">      
               <HoveredLink href="/pages/votre-creation">Créer une vitrine</HoveredLink> 
-              <HoveredLink href="/pages/votre-creation">Créer une site d\'information</HoveredLink> 
+                <HoveredLink href="/pages/votre-creation">Créer une site d&apos;information</HoveredLink> 
               <HoveredLink href="/web-dev">Gérer une communauté</HoveredLink>                
           </div>
         </MenuItem>
