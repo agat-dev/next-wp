@@ -149,7 +149,7 @@ export default function Navbar({ className }: { className?: string }) {
               description="Prepare for tech interviews like never before."
             />
             <ProductItem
-              title="Portail d'information"
+              title="Portail d\'information"
               href="https://tailwindmasterkit.com"
               src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
               description="Production ready Tailwind css components for your next project"

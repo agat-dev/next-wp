@@ -30,7 +30,7 @@ export default async function PostCard({ post }: { post: Post }) {
     >
       <div className="flex flex-col gap-4">
         <div className="h-48 w-full overflow-hidden relative rounded-md border flex items-center justify-center">
-          <img src={media.source_url} alt={post.title.rendered} />
+          <Image src={media.source_url} alt={post.title.rendered} layout="fill" objectFit="cover" />
         </div>
         <div
           dangerouslySetInnerHTML={{ __html: post.title.rendered }}

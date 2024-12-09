@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface MarqueeProps {
   className?: string;
@@ -68,7 +69,7 @@ const ReviewCardReferences = ({
       )}
     >
       <div className="flex flex-col items-center">
-        <img className="m-1 object-contain" width="80" height="80" alt="" src={img} />
+        <Image className="m-1 object-contain" width={80} height={80} alt="" src={img} />
       </div>
     </figure>
   );

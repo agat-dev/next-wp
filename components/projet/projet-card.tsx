@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { Projet } from "@/lib/wordpress.d";
 import { cn } from "@/lib/utils";
@@ -26,8 +27,8 @@ export default async function ProjetCard({ projet }: { projet: Projet }) {
     >
       <div className="flex flex-col gap-4">
         <div className="h-48 w-full overflow-hidden relative rounded-md border flex items-center justify-center">
-          <img src={mediaUrl} alt={projet.title.rendered} />
-          </div>
+          <Image src={mediaUrl} alt={projet.title.rendered} layout="fill" objectFit="cover" />
+        </div>
         <div
           dangerouslySetInnerHTML={{ __html: projet.title.rendered }}
           className="text-xl text-primary font-medium group-hover:underline decoration-muted-foreground underline-offset-4 decoration-dotted transition-all"
