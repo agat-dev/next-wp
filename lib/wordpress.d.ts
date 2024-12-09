@@ -71,7 +71,6 @@ export type Projet = {
 			screen: number;
 			video: number;
 		},
-  annee: number[];
   author: number;
   featured_media: number;
   comment_status: "open" | "closed";
@@ -92,6 +91,7 @@ export type Projet = {
   meta: any[];
   categories: number[];
   tags: number[];
+  annee: number[];
 };
 /* end Ajouts projets */
 

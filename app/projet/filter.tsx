@@ -71,7 +71,7 @@ export default function FilterPosts({
   return (
     <div className="grid md:grid-cols-[1fr_1fr_1fr_0.5fr] gap-2 my-4 !z-10">
       <Select
-        value={selectedAnnee || "all"}
+        value={selectedAnnee !== undefined ? selectedAnnee.toString() : "all"}
         onValueChange={(value) => handleFilterChange("annee", value)}
       >
         <SelectTrigger>
@@ -79,11 +79,13 @@ export default function FilterPosts({
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">Années</SelectItem>
-          {annees.map((annee) => (
-            <SelectItem key={annee.id} value={annee.id.toString()}>
+          {annees
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((annee) => (
+              <SelectItem key={annee.id} value={annee.id.toString()}>
               {annee.name}
-            </SelectItem>
-          ))}
+              </SelectItem>
+            ))}
         </SelectContent>
       </Select>
 

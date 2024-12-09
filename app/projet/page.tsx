@@ -25,7 +25,7 @@ export default async function Page({
   searchParams: { [key: string]: string | undefined };
 }) {
   const { author, tag, category, annee, page: pageParam } = searchParams;
-  const posts = await getAllProjets({ author, tag, category });
+  const posts = await getAllProjets({ author, tag, category, annee });
   const authors = await getAllAuthors();
   const tags = await getAllTags();
   const categories = await getAllCategories();
@@ -51,7 +51,7 @@ export default async function Page({
           selectedAuthor={author}
           selectedTag={tag}
           selectedCategory={category}
-          selectedAnnee={annee}
+          selectedAnnee={annee ? parseInt(annee, 10) : undefined}
         />
 
         {paginatedPosts.length > 0 ? (
@@ -80,7 +80,7 @@ export default async function Page({
                 />
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href={`/posts?page=${page}`}>
+                <PaginationLink href={`/projet?page=${page}`}>
                   {page}
                 </PaginationLink>
               </PaginationItem>

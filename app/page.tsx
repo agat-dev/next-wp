@@ -3,9 +3,11 @@ import { Section, Container } from "@/components/craft";
 import { HoverEffectBento } from "@/components/bento";
 //import Balancer from "react-wrap-balancer";
 
+import { cn } from "@/lib/utils";
 // Components
 import Marquee from "@/components/ui/marquee";
 import { ReviewCardReferences } from "@/components/ui/marquee";
+import { CardStack } from "@/components/ui/card-stack";
 
 // Datas
 import { getAllReferences, getFeaturedMediaById } from "@/lib/wordpress";
@@ -38,6 +40,74 @@ async function LogosReferencesVertical() {
     );
 }
 
+export function CardStackDemo() {
+  return (
+    <div className="h-[24rem] flex items-center justify-center w-full">
+      <CardStack items={CARDS} />
+    </div>
+  );
+}
+// Small utility to highlight the content of specific section of a testimonial content
+export const Highlight = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <span
+      className={cn(
+        "font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500 px-1 py-0.5",
+        className
+      )}
+    >
+      {children}
+    </span>
+  );
+};
+
+const CARDS = [
+  {
+    id: 0,
+    name: "Manu Arora",
+    designation: "Senior Software Engineer",
+    content: (
+      <p>
+        These cards are amazing, <Highlight>I want to use them</Highlight> in my
+        project. Framer motion is a godsend ngl tbh fam 🙏
+      </p>
+    ),
+  },
+  {
+    id: 1,
+    name: "Elon Musk",
+    designation: "Senior Shitposter",
+    content: (
+      <p>
+        I dont like this Twitter thing,{" "}
+        <Highlight>deleting it right away</Highlight> because yolo. Instead, I
+        would like to call it <Highlight>X.com</Highlight> so that it can easily
+        be confused with adult sites.
+      </p>
+    ),
+  },
+  {
+    id: 2,
+    name: "Tyler Durden",
+    designation: "Manager Project Mayhem",
+    content: (
+      <p>
+        The first rule of
+        <Highlight>Fight Club</Highlight> is that you do not talk about fight
+        club. The second rule of
+        <Highlight>Fight club</Highlight> is that you DO NOT TALK about fight
+        club.
+      </p>
+    ),
+  },
+];
+
 
 
 // This page is using the craft.tsx component and design system
@@ -66,25 +136,65 @@ const ExampleJsx = () => {
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/projet",
             background: "",
-            classNameLink: "lg:col-span-3 lg:row-span-3",
-          },
+            classNameLink: "lg:col-span-3 lg:row-span-2",
+          },          
           {
-            title: "WordPress & Développement",
+            title: "Site vitrine",
             description:
-              "Learn how to use the components and features of this starter.",
+              "",
             link: "https://agat.dev",
             background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-2",
-          },
+            classNameLink: "lg:col-span-1 lg:row-span-1",
+          },   
+          {
+            title: "Site d'information",
+            description:
+              "",
+            link: "https://agat.dev",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-1",
+          },           
           {
             title: "Logos technos",
             description:"",
             link: "/reference",
             background: <LogosReferencesVertical />,
-            classNameLink: "lg:col-span-1 lg:row-span-7",
+            classNameLink: "lg:col-span-1 lg:row-span-8",
+          },      
+          {
+            title: "Site de membres",
+            description:
+              "",
+            link: "https://agat.dev",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-1",
+          },          
+          {
+            title: "Audit et optimisation",
+            description:
+              "",
+            link: "https://agat.dev",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-1",
           },
           {
-            title: "Projets réalisés",
+            title: "Technos",
+            description:
+              "",
+            link: "/reference",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-3 items-center",
+          },
+          {
+            title: "",
+            description:
+              "",
+            link: "/reference",
+            background: <CardStackDemo />,
+            classNameLink: "lg:col-span-2 lg:row-span-3",
+          },
+          {
+            title: "Dernier projet",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/projet",
@@ -95,17 +205,9 @@ const ExampleJsx = () => {
             title: "Processus de travail",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
-            link: "/projet",
-            background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-3",
-          },
-          {
-            title: "Témoignages",
-            description:
-              "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/posts",
             background: "",
-            classNameLink: "lg:col-span-3 lg:row-span-3",
+            classNameLink: "lg:col-span-3 lg:row-span-2",
           },
           {
             title: "Blog",
@@ -113,15 +215,15 @@ const ExampleJsx = () => {
               "",
             link: "/posts",
             background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-2 items-center",
+            classNameLink: "lg:col-span-2 lg:row-span-3 items-center",
           },
           {
-            title: "Technos",
+            title: "",
             description:
               "",
             link: "/reference",
             background: "",
-            classNameLink: "lg:col-span-4 lg:row-span-1 items-center",
+            classNameLink: "lg:col-span-3 lg:row-span-1 items-center",
           },
           {
             title: "Footer",
