@@ -9,7 +9,6 @@ import "./globals.css";
 import { MobileNav } from "@/components/nav/mobile-nav";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Main } from "@/components/craft";
-import NavBar from "@/components/ui/navbar-menu";
  
 import Logo from "@/public/logo.svg";
 
@@ -49,8 +48,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-      
-            <NavBar />       
+       
             <MobileNav /> 
           <Main>{children}</Main>
           

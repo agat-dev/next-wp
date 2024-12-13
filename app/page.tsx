@@ -131,6 +131,30 @@ const ExampleJsx = () => {
       <HoverEffectBento
         items={[
           {
+            title: "",
+            description:
+              "",
+            link: "#",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-1", 
+          }, 
+          {
+            title: "",
+            description:
+              "",
+            link: "#",
+            background: "",
+            classNameLink: "lg:col-span-4 lg:row-span-1", 
+          }, 
+          {
+            title: "",
+            description:
+              "",
+            link: "#",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-1", 
+          }, 
+          {
             title: "Création de sites web",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
@@ -144,38 +168,31 @@ const ExampleJsx = () => {
               "",
             link: "https://agat.dev",
             background: "",
-            classNameLink: "lg:col-span-1 lg:row-span-1",
-          },   
-          {
-            title: "Site d'information",
-            description:
-              "",
-            link: "https://agat.dev",
-            background: "",
-            classNameLink: "lg:col-span-1 lg:row-span-1",
-          },           
+            classNameLink: "lg:col-span-2 lg:row-span-1",
+          },            
           {
             title: "Logos technos",
             description:"",
             link: "/reference",
             background: <LogosReferencesVertical />,
             classNameLink: "lg:col-span-1 lg:row-span-8",
-          },      
+          },  
           {
-            title: "Site de membres",
+            title: "Dernier projet",
+            description:
+              "Learn how to use this starter and build your WordPress site with Next.js.",
+            link: "/projet",
+            background: "",
+            classNameLink: "lg:col-span-2 lg:row-span-3",
+          },   
+
+          {
+            title: "",
             description:
               "",
-            link: "https://agat.dev",
-            background: "",
-            classNameLink: "lg:col-span-1 lg:row-span-1",
-          },          
-          {
-            title: "Audit et optimisation",
-            description:
-              "",
-            link: "https://agat.dev",
-            background: "",
-            classNameLink: "lg:col-span-1 lg:row-span-1",
+            link: "/reference",
+            background: <CardStackDemo />,
+            classNameLink: "lg:col-span-2 lg:row-span-3",
           },
           {
             title: "Technos",
@@ -186,28 +203,12 @@ const ExampleJsx = () => {
             classNameLink: "lg:col-span-1 lg:row-span-3 items-center",
           },
           {
-            title: "",
-            description:
-              "",
-            link: "/reference",
-            background: <CardStackDemo />,
-            classNameLink: "lg:col-span-2 lg:row-span-3",
-          },
-          {
-            title: "Dernier projet",
-            description:
-              "Learn how to use this starter and build your WordPress site with Next.js.",
-            link: "/projet",
-            background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-3",
-          },
-          {
             title: "Processus de travail",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/posts",
             background: "",
-            classNameLink: "lg:col-span-3 lg:row-span-2",
+            classNameLink: "lg:col-span-2 lg:row-span-2",
           },
           {
             title: "Blog",
@@ -215,15 +216,7 @@ const ExampleJsx = () => {
               "",
             link: "/posts",
             background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-3 items-center",
-          },
-          {
-            title: "",
-            description:
-              "",
-            link: "/reference",
-            background: "",
-            classNameLink: "lg:col-span-3 lg:row-span-1 items-center",
+            classNameLink: "lg:col-span-3 lg:row-span-2 items-center",
           },
           {
             title: "Footer",
@@ -231,7 +224,7 @@ const ExampleJsx = () => {
               "",
             link: "/reference",
             background: "",
-            classNameLink: "lg:col-span-6 lg:row-span-1 items-center",
+            classNameLink: "lg:col-span-5 lg:row-span-1 items-center",
           },
       ]}
       />
