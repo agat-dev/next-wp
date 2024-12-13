@@ -1,12 +1,114 @@
 // Craft Imports
 import { Section, Container } from "@/components/craft";
-import Balancer from "react-wrap-balancer";
+import { HoverEffectBento } from "@/components/bento";
+//import Balancer from "react-wrap-balancer";
 
+import { cn } from "@/lib/utils";
 // Components
-import Link from "next/link";
+import Marquee from "@/components/ui/marquee";
+import { ReviewCardReferences } from "@/components/ui/marquee";
+import { CardStack } from "@/components/ui/card-stack";
 
-// Icons
-import { File, Pen, Tag, Boxes, User, Folder } from "lucide-react";
+// Datas
+import { getAllReferences, getFeaturedMediaById } from "@/lib/wordpress";
+
+
+async function LogosReferencesVertical() {
+  const references = await getAllReferences();
+  const referencesWithMedia = await Promise.all(
+    references.map(async (reference: any) => {
+      const media = await getFeaturedMediaById(reference.featured_media);      
+      return {
+        ...reference,
+        link: media ? media.source_url : '',
+      };
+    })
+  );
+  const reviews = referencesWithMedia.map((reference: any) => ({
+      name: reference.name,
+      username: `${reference.slug}`,
+      img: reference.link || "https://avatar.vercel.sh/default",
+    }));
+    return (
+      <div className="relative flex h-max-content w-full flex-row items-center justify-center overflow-hidden">
+        <Marquee pauseOnHover vertical className="[--duration:40s]">
+          {reviews.map((review) => (
+            <ReviewCardReferences key={review.username} {...review} />
+          ))}
+        </Marquee>
+      </div>
+    );
+}
+
+async function CardStackDemo() {
+  return (
+    <div className="h-[24rem] flex items-center justify-center w-full">
+      <CardStack items={CARDS} />
+    </div>
+  );
+}
+// Small utility to highlight the content of specific section of a testimonial content
+const Highlight = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <span
+      className={cn(
+        "font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500 px-1 py-0.5",
+        className
+      )}
+    >
+      {children}
+    </span>
+  );
+};
+
+const CARDS = [
+  {
+    id: 0,
+    name: "Manu Arora",
+    designation: "Senior Software Engineer",
+    content: (
+      <p>
+        These cards are amazing, <Highlight>I want to use them</Highlight> in my
+        project. Framer motion is a godsend ngl tbh fam 🙏
+      </p>
+    ),
+  },
+  {
+    id: 1,
+    name: "Elon Musk",
+    designation: "Senior Shitposter",
+    content: (
+      <p>
+        I dont like this Twitter thing,{" "}
+        <Highlight>deleting it right away</Highlight> because yolo. Instead, I
+        would like to call it <Highlight>X.com</Highlight> so that it can easily
+        be confused with adult sites.
+      </p>
+    ),
+  },
+  {
+    id: 2,
+    name: "Tyler Durden",
+    designation: "Manager Project Mayhem",
+    content: (
+      <p>
+        The first rule of
+        <Highlight>Fight Club</Highlight> is that you do not talk about fight
+        club. The second rule of
+        <Highlight>Fight club</Highlight> is that you DO NOT TALK about fight
+        club.
+      </p>
+    ),
+  },
+];
+
+
 
 // This page is using the craft.tsx component and design system
 export default function Home() {
@@ -21,103 +123,122 @@ export default function Home() {
 
 // This is just some example JS to demonstrate automatic styling from brijr/craft
 const ExampleJsx = () => {
+
+
   return (
     <article className="prose-m-none">
-      <h1>
-        <Balancer>
-          Hello World, welcome to the Next.js and WordPress Starter by{" "}
-          <a href="https://9d8.dev">9d8</a>.
-        </Balancer>
-      </h1>
-      {/* Vercel Clone Starter */}
-      <a
-        className="h-16 block"
-        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F9d8dev%2Fnext-wp&env=WORDPRESS_URL,WORDPRESS_HOSTNAME&envDescription=Add%20WordPress%20URL%20with%20Rest%20API%20enabled%20(ie.%20https%3A%2F%2Fwp.example.com)%20abd%20the%20hostname%20for%20Image%20rendering%20in%20Next%20JS%20(ie.%20wp.example.com)&project-name=next-wp&repository-name=next-wp&demo-title=Next%20JS%20and%20WordPress%20Starter&demo-url=https%3A%2F%2Fwp.9d8.dev">
-        {/* eslint-disable-next-line */}
-        <img
-          className="not-prose my-4"
-          src="https://vercel.com/button"
-          alt="Deploy with Vercel"
-        />
-      </a>
-      <p>
-        This is <a href="https://github.com/9d8dev/next-wp">next-wp</a>, created
-        as a way to build WordPress sites with Next.js at rapid speed. This
-        starter is designed with <a href="https://ui.shadcn.com">shadcn/ui</a>,{" "}
-        <a href="https://github.com/brijr/craft">brijr/craft</a>, and Tailwind
-        CSS. Use <a href="https://components.bridger.to">brijr/components</a> to
-        build your site with prebuilt components. The data fetching and
-        typesafety is handled in <code>lib/WordPress.ts</code> and{" "}
-        <code>lib/WordPress.d.ts</code>. Questions? Email 9d8dev@gmail.com
-      </p>
-      <div className="grid md:grid-cols-3 gap-4 mt-6 not-prose">
-        <Link
-          className="border h-48 bg-accent/50 rounded-lg p-4 flex flex-col justify-between hover:scale-[1.02] transition-all"
-          href="/posts">
-          <Pen size={32} />
-          <span>
-            Posts{" "}
-            <span className="block text-sm text-muted-foreground">
-              All posts from your WordPress
-            </span>
-          </span>
-        </Link>
-        <Link
-          className="border h-48 bg-accent/50 rounded-lg p-4 flex flex-col justify-between hover:scale-[1.02] transition-all"
-          href="/pages">
-          <File size={32} />
-          <span>
-            Pages{" "}
-            <span className="block text-sm text-muted-foreground">
-              Custom pages from your WordPress
-            </span>
-          </span>
-        </Link>
-        <Link
-          className="border h-48 bg-accent/50 rounded-lg p-4 flex flex-col justify-between hover:scale-[1.02] transition-all"
-          href="/posts/authors">
-          <User size={32} />
-          <span>
-            Authors{" "}
-            <span className="block text-sm text-muted-foreground">
-              List of the authors from your WordPress
-            </span>
-          </span>
-        </Link>
-        <Link
-          className="border h-48 bg-accent/50 rounded-lg p-4 flex flex-col justify-between hover:scale-[1.02] transition-all"
-          href="/projet">
-          <Tag size={32} />
-          <span>
-            Projets{" "}
-            <span className="block text-sm text-muted-foreground">
-            Projects from agat.dev 
-            </span>
-          </span>
-        </Link>
-        <Link
-          className="border h-48 bg-accent/50 rounded-lg p-4 flex flex-col justify-between hover:scale-[1.02] transition-all"
-          href="/posts/categories">
-          <Boxes size={32} />
-          <span>
-            Categories{" "}
-            <span className="block text-sm text-muted-foreground">
-              Categories from your WordPress
-            </span>
-          </span>
-        </Link>
-        <a
-          className="border h-48 bg-accent/50 rounded-lg p-4 flex flex-col justify-between hover:scale-[1.02] transition-all"
-          href="https://github.com/9d8dev/next-wp">
-          <Folder size={32} />
-          <span>
-            Documentation{" "}
-            <span className="block text-sm text-muted-foreground">
-              How to use `next-wp`
-            </span>
-          </span>
-        </a>
-      </div>
+
+      <HoverEffectBento
+        items={[
+          {
+            title: "Création de sites web",
+            description:
+              "Learn how to use this starter and build your WordPress site with Next.js.",
+            link: "/projet",
+            background: "",
+            classNameLink: "lg:col-span-3 lg:row-span-2",
+          },          
+          {
+            title: "Site vitrine",
+            description:
+              "",
+            link: "https://agat.dev",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-1",
+          },   
+          {
+            title: "Site d'information",
+            description:
+              "",
+            link: "https://agat.dev",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-1",
+          },           
+          {
+            title: "Logos technos",
+            description:"",
+            link: "/reference",
+            background: <LogosReferencesVertical />,
+            classNameLink: "lg:col-span-1 lg:row-span-8",
+          },      
+          {
+            title: "Site de membres",
+            description:
+              "",
+            link: "https://agat.dev",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-1",
+          },          
+          {
+            title: "Audit et optimisation",
+            description:
+              "",
+            link: "https://agat.dev",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-1",
+          },
+          {
+            title: "Technos",
+            description:
+              "",
+            link: "/reference",
+            background: "",
+            classNameLink: "lg:col-span-1 lg:row-span-3 items-center",
+          },
+          {
+            title: "",
+            description:
+              "",
+            link: "/reference",
+            background: <CardStackDemo />,
+            classNameLink: "lg:col-span-2 lg:row-span-3",
+          },
+          {
+            title: "Dernier projet",
+            description:
+              "Learn how to use this starter and build your WordPress site with Next.js.",
+            link: "/projet",
+            background: "",
+            classNameLink: "lg:col-span-2 lg:row-span-3",
+          },
+          {
+            title: "Processus de travail",
+            description:
+              "Learn how to use this starter and build your WordPress site with Next.js.",
+            link: "/posts",
+            background: "",
+            classNameLink: "lg:col-span-3 lg:row-span-2",
+          },
+          {
+            title: "Blog",
+            description:
+              "",
+            link: "/posts",
+            background: "",
+            classNameLink: "lg:col-span-2 lg:row-span-3 items-center",
+          },
+          {
+            title: "",
+            description:
+              "",
+            link: "/reference",
+            background: "",
+            classNameLink: "lg:col-span-3 lg:row-span-1 items-center",
+          },
+          {
+            title: "Footer",
+            description:
+              "",
+            link: "/reference",
+            background: "",
+            classNameLink: "lg:col-span-6 lg:row-span-1 items-center",
+          },
+      ]}
+      />
+
+
+
     </article>
   );
 };
+
