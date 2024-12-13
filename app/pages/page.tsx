@@ -1,6 +1,8 @@
 import { getAllPages } from "@/lib/wordpress";
 import { Section, Container } from "@/components/craft";
 import Link from "next/link";
+import NotionFormIframe from "@/components/ui/notion-form";
+import NotionModelsIframe from "@/components/ui/notion-models";
 
 export default async function Page() {
   const pages = await getAllPages();
@@ -18,6 +20,8 @@ export default async function Page() {
             </Link>
           ))}
         </div>
+        <NotionModelsIframe/>
+        <NotionFormIframe />
       </Container>
     </Section>
   );
