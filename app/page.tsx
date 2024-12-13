@@ -90,9 +90,10 @@ const ExampleJsx = () => {
           <Tag size={32} />
           <span>
             Projets{" "}
-            <span className="block text-sm text-muted-foreground"></span>
+            <span className="block text-sm text-muted-foreground">
             Projects from agat.dev 
             </span>
+          </span>
         </Link>
         <Link
           className="border h-48 bg-accent/50 rounded-lg p-4 flex flex-col justify-between hover:scale-[1.02] transition-all"
