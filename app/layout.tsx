@@ -9,9 +9,8 @@ import "./globals.css";
 import { MobileNav } from "@/components/nav/mobile-nav";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Main } from "@/components/craft";
- 
 import Logo from "@/public/logo.svg";
-
+import App from "@/components/nav/main-nav";
 
 import { cn } from "@/lib/utils";
 
@@ -31,6 +30,8 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 
+
+
 export default function RootLayout({
   children,
 }: {
@@ -48,7 +49,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-       
+          <App />
             <MobileNav /> 
           <Main>{children}</Main>
           
