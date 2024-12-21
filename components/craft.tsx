@@ -17,7 +17,7 @@ type LayoutProps = {
 const Layout = ({ children, className }: LayoutProps) => {
   return (
     <html
-      lang="en"
+      lang="fr"
       suppressHydrationWarning
       className={cn("scroll-smooth antialiased focus:scroll-auto", className)}
     >
@@ -40,15 +40,15 @@ const Main = ({ children, className, id }: MainProps) => {
         // `Main` Specific Styles
         "max-w-none prose-p:m-0",
         // General Prose
-        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-lg",
+        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-md",
         // Prose Headings
         "prose-headings:font-normal",
         // Prose Strong
         "prose-strong:font-semibold",
         // Inline Links
-        "prose-a:underline prose-a:decoration-primary/50 prose-a:underline-offset-2 prose-a:text-foreground/75 prose-a:transition-all",
+        "prose-a:text-foreground/75 prose-a:transition-all prose-a:no-underline",
         // Inline Link Hover
-        "hover:prose-a:decoration-primary hover:prose-a:text-foreground",
+        "hover:prose-a:no-underline hover:prose-a:text-foreground",
         // Blockquotes
         "prose-blockquote:not-italic",
         // Pre and Code Blocks
@@ -71,7 +71,7 @@ type SectionProps = {
 
 const Section = ({ children, className, id }: SectionProps) => {
   return (
-    <section className={cn("py-8 md:py-12 fade-in", className)} id={id}>
+    <section className={cn("py-4 md:py-8 fade-in", className)} id={id}>
       {children}
     </section>
   );
@@ -86,7 +86,7 @@ type ContainerProps = {
 
 const Container = ({ children, className, id }: ContainerProps) => {
   return (
-    <div className={cn("mx-auto max-w-5xl", "p-6 sm:p-8", className)} id={id}>
+    <div className={cn("mx-auto max-w-screen-xl", "p-2 sm:p-4", className)} id={id}>
       {children}
     </div>
   );
@@ -111,7 +111,7 @@ const Article = ({
       dangerouslySetInnerHTML={dangerouslySetInnerHTML}
       className={cn(
         // General Prose
-        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-lg",
+        "prose prose-neutral prose:font-sans dark:prose-invert xl:prose-md",
         // Prose Headings
         "prose-headings:font-normal",
         // Prose Paragraphs
@@ -119,15 +119,15 @@ const Article = ({
         // Prose Strong
         "prose-strong:font-semibold",
         // Inline Links
-        "prose-a:underline prose-a:decoration-primary/50 prose-a:underline-offset-2 prose-a:text-foreground/75 prose-a:transition-all",
+        "prose-a:no-underline prose-a:text-foreground/75 prose-a:transition-all",
         // Inline Link Hover
-        "hover:prose-a:decoration-primary hover:prose-a:text-foreground",
+        "hover:prose-a:no-underline hover:prose-a:text-foreground",
         // Blockquotes
         "prose-blockquote:not-italic",
         // Pre and Code Blocks
         "prose-pre:border prose-pre:bg-muted/25",
         // Images
-        "prose-img:rounded-lg prose-img:border prose-img:overflow-hidden",
+        "prose-img:rounded-lg prose-img:border prose-img:overflow-hidden", 
         className
       )}
       id={id}
@@ -136,5 +136,7 @@ const Article = ({
     </article>
   );
 };
+
+
 
 export { Layout, Main, Section, Container, Article };
