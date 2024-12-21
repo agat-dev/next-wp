@@ -170,33 +170,34 @@ const ExampleJsx = () => {
             classNameLink: "lg:col-span-2 lg:row-span-3",
           },
           {
-            title: "Technos",
-            description:
-              "",
-            link: "/reference",
-            background: "",
-            classNameLink: "lg:col-span-1 lg:row-span-3 items-center",
-          },
-          {
             title: "Processus de travail",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/posts",
             background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-2",
+            classNameLink: "lg:col-span-3 lg:row-span-2",
           },
+          
           {
             title: "Blog",
             description:
               "",
             link: "/posts",
             background: "",
-            classNameLink: "lg:col-span-3 lg:row-span-2 items-center",
+            classNameLink: "lg:col-span-2 lg:row-span-4",
+          },
+          {
+            title: "References",
+            description:
+              "",
+            link: "/posts",
+            background: <LogosReferencesHorizontal />,
+            classNameLink: "lg:col-span-2 lg:row-span-2 items-center",
           },
       ]}
       />
 
-    <LogosReferencesHorizontal />
+    
 
     </article>
   );
