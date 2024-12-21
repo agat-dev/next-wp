@@ -13,7 +13,7 @@ import { CardStack } from "@/components/ui/card-stack";
 import { getAllReferences, getFeaturedMediaById } from "@/lib/wordpress";
 
 
-async function LogosReferencesVertical() {
+async function LogosReferencesHorizontal() {
   const references = await getAllReferences();
   const referencesWithMedia = await Promise.all(
     references.map(async (reference: any) => {
@@ -30,8 +30,8 @@ async function LogosReferencesVertical() {
       img: reference.link || "https://avatar.vercel.sh/default",
     }));
     return (
-      <div className="relative flex h-max-content w-full flex-row items-center justify-center overflow-hidden">
-        <Marquee pauseOnHover vertical className="[--duration:40s]">
+      <div className="relative flex h-max-content py-4 w-full flex-row items-center justify-center overflow-hidden">
+        <Marquee pauseOnHover horizontal className="[--duration:40s]">
           {reviews.map((review) => (
             <ReviewCardReferences key={review.username} {...review} />
           ))}
@@ -131,31 +131,7 @@ const ExampleJsx = () => {
       <HoverEffectBento
         items={[
           {
-            title: "",
-            description:
-              "",
-            link: "#",
-            background: "",
-            classNameLink: "lg:col-span-1 lg:row-span-1", 
-          }, 
-          {
-            title: "",
-            description:
-              "",
-            link: "#",
-            background: "",
-            classNameLink: "lg:col-span-4 lg:row-span-1", 
-          }, 
-          {
-            title: "",
-            description:
-              "",
-            link: "#",
-            background: "",
-            classNameLink: "lg:col-span-1 lg:row-span-1", 
-          }, 
-          {
-            title: "Création de sites web",
+            title: "A propos",
             description:
               "Learn how to use this starter and build your WordPress site with Next.js.",
             link: "/projet",
@@ -163,18 +139,18 @@ const ExampleJsx = () => {
             classNameLink: "lg:col-span-3 lg:row-span-2",
           },          
           {
-            title: "Site vitrine",
+            title: "Création de sites web",
             description:
               "",
             link: "https://agat.dev",
             background: "",
-            classNameLink: "lg:col-span-2 lg:row-span-1",
+            classNameLink: "lg:col-span-2 lg:row-span-3",
           },            
           {
             title: "Logos technos",
             description:"",
             link: "/reference",
-            background: <LogosReferencesVertical />,
+            background: "",
             classNameLink: "lg:col-span-1 lg:row-span-8",
           },  
           {
@@ -185,7 +161,6 @@ const ExampleJsx = () => {
             background: "",
             classNameLink: "lg:col-span-2 lg:row-span-3",
           },   
-
           {
             title: "",
             description:
@@ -218,18 +193,10 @@ const ExampleJsx = () => {
             background: "",
             classNameLink: "lg:col-span-3 lg:row-span-2 items-center",
           },
-          {
-            title: "Footer",
-            description:
-              "",
-            link: "/reference",
-            background: "",
-            classNameLink: "lg:col-span-5 lg:row-span-1 items-center",
-          },
       ]}
       />
 
-
+    <LogosReferencesHorizontal />
 
     </article>
   );

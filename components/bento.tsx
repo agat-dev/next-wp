@@ -79,7 +79,7 @@ export const HoverEffectBento = ({
     return (
       <div
         className={cn(
-          "grid w-full auto-rows-[8rem] grid-cols-6 ",
+          "grid w-full auto-rows-[8rem] grid-cols-6 py-4 ",
           className
         )}
       >
