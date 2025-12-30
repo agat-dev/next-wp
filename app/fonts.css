@@ -1,0 +1,14 @@
+
+
+:root {
+  --font-title: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+  --font-text: 'Lato', 'Open Sans', 'Roboto', ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-title {
+  font-family: var(--font-title);
+}
+
+body, p, li, span, div, .font-text {
+  font-family: var(--font-text);
+}

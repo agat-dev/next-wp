@@ -1,9 +1,8 @@
-import type { NextConfig } from "next";
-
+/** @type {import('next').NextConfig} */
 const wordpressHostname = process.env.WORDPRESS_HOSTNAME;
 const wordpressUrl = process.env.WORDPRESS_URL;
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   output: "standalone",
   images: {
     remotePatterns: wordpressHostname
@@ -31,4 +30,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

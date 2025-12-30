@@ -11,6 +11,41 @@ import type {
   Author,
   FeaturedMedia,
 } from "./wordpress.d";
+import type { ACFFields } from "./acf";
+import { decodeHtml } from "./decodeHtml";
+// --- ACF access functions ---
+/**
+ * Récupère les champs ACF d'un post (ou page) via l'API REST WordPress (acf-to-rest-api ou show_in_rest)
+ * @param postId L'identifiant du post
+ */
+export async function getACFFieldsByPostId(postId: number): Promise<ACFFields | null> {
+  if (!baseUrl) return null;
+  try {
+    // L'endpoint dépend du plugin utilisé côté WP (ici /wp-json/acf/v3/post/{id})
+    const res = await fetch(`${baseUrl}/wp-json/acf/v3/posts/${postId}`);
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json.fields as ACFFields;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Récupère les champs ACF d'une page via l'API REST WordPress
+ * @param pageId L'identifiant de la page
+ */
+export async function getACFFieldsByPageId(pageId: number): Promise<ACFFields | null> {
+  if (!baseUrl) return null;
+  try {
+    const res = await fetch(`${baseUrl}/wp-json/acf/v3/pages/${pageId}`);
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json.fields as ACFFields;
+  } catch {
+    return null;
+  }
+}
 
 // Single source of truth for WordPress configuration
 const baseUrl = process.env.WORDPRESS_URL;
@@ -432,6 +467,51 @@ export async function getPostsByAuthorPaginated(
     page,
     author: authorId,
   });
+}
+
+export async function fetchWordpressPages(): Promise<
+  {
+    label: string;
+    bgColor: string;
+    textColor: string;
+    links: { label: string; href: string; ariaLabel: string }[];
+  }[]
+> {
+  if (!isConfigured) return [];
+
+  try {
+    const pages = await wordpressFetchGraceful<any[]>(
+      "/wp-json/wp/v2/pages",
+      [],
+      { per_page: 100 },
+      ["wordpress", "pages"]
+    );
+
+    // Trie les pages par menu_order
+    const sortedPages = [...pages].sort((a, b) => (a.menu_order ?? 0) - (b.menu_order ?? 0));
+
+    // Sélectionne les parents dans l'ordre WordPress
+    const parents = sortedPages.filter(
+      (p: any) => (!p.parent && p.slug !== "accueil") // exclut "accueil"
+    );
+
+    return parents.map((parent: any) => ({
+      label: decodeHtml(parent.title.rendered),
+      bgColor: "#000000",
+      textColor: "#021373",
+      links: [
+        ...sortedPages
+          .filter((child: any) => child.parent === parent.id && child.slug !== "accueil")
+          .map((child: any) => ({
+            label: decodeHtml(child.title.rendered),
+            href: `/page/${child.slug}`,
+            ariaLabel: decodeHtml(child.title.rendered),
+          })),
+      ],
+    }));
+  } catch {
+    return [];
+  }
 }
 
 export { WordPressAPIError };
