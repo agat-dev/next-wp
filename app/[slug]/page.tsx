@@ -1,8 +1,7 @@
 import { getPageBySlug, getAllPages } from "@/lib/wordpress";
-import { Section, Container, Prose } from "@/components/craft";
+import ClientPageHeaderBlock from "@/components/client-page-header-block";
 import { siteConfig } from "@/site.config";
 import { notFound } from "next/navigation";
-
 import type { Metadata } from "next";
 
 // Revalidate pages every hour
@@ -10,7 +9,6 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const pages = await getAllPages();
-
   return pages.map((page) => ({
     slug: page.slug,
   }));
@@ -46,7 +44,7 @@ export async function generateMetadata({
       title: page.title.rendered,
       description: description,
       type: "article",
-      url: `${siteConfig.site_domain}/pages/${page.slug}`,
+      url: `${siteConfig.site_domain}/${page.slug}`,
       images: [
         {
           url: ogUrl.toString(),
@@ -78,13 +76,8 @@ export default async function Page({
   }
 
   return (
-    <Section>
-      <Container>
-        <Prose>
-          <h2>{page.title.rendered}</h2>
-          <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-        </Prose>
-      </Container>
-    </Section>
+    <>
+      <ClientPageHeaderBlock pages={page} />
+    </>
   );
 }

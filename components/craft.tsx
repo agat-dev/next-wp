@@ -86,16 +86,16 @@ export interface BoxProps extends BaseProps {
 const styles = {
   typography: {
     base: [
-      "font-sans antialiased",
+      "font-sans antialiased text-[var(--color-text)]",
       // Headings (without spacing)
-      "[&_h1]:text-4xl [&_h1]:font-medium [&_h1]:tracking-tight",
-      "[&_h2]:text-3xl [&_h2]:font-medium [&_h2]:tracking-tight",
-      "[&_h3]:text-2xl [&_h3]:font-medium [&_h3]:tracking-tight",
-      "[&_h4]:text-xl [&_h4]:font-medium [&_h4]:tracking-tight",
-      "[&_h5]:text-lg [&_h5]:font-medium [&_h5]:tracking-tight",
-      "[&_h6]:text-base [&_h6]:font-medium [&_h6]:tracking-tight",
+      "[&_h1]:text-4xl [&_h1]:font-medium [&_h1]:tracking-tight [&_h1]:text-[var(--color-accent)]",
+      "[&_h2]:text-3xl [&_h2]:font-medium [&_h2]:tracking-tight [&_h2]:text-[var(--color-accent)]",
+      "[&_h3]:text-2xl [&_h3]:font-medium [&_h3]:tracking-tight [&_h3]:text-[var(--color-accent)]",
+      "[&_h4]:text-xl [&_h4]:font-medium [&_h4]:tracking-tight [&_h4]:text-[var(--color-accent)]",
+      "[&_h5]:text-lg [&_h5]:font-medium [&_h5]:tracking-tight [&_h5]:text-[var(--color-accent)]",
+      "[&_h6]:text-base [&_h6]:font-medium [&_h6]:tracking-tight [&_h6]:text-[var(--color-accent)]",
       // Text elements
-      "[&_p]:text-base [&_p]:leading-7 [&_p]:mb-4",
+      "[&_p]:text-base [&_p]:leading-7 [&_p]:mb-4 [&_p]:text-[var(--color-info)]",
       "[&_strong]:font-semibold",
       "[&_em]:italic",
       "[&_del]:line-through",

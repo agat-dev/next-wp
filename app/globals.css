@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;700;900&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
 @import "tailwindcss";
 @import "./fonts.css";
 
@@ -21,32 +22,6 @@
         "Noto Color Emoji";
 
     /* Poseidon Color Theme */
-    --color-border: #45C4B0;                /* Poseidon-3 */
-    --color-input: #9AEBA3;                 /* Poseidon-2 */
-    --color-ring: #13678A;                  /* Poseidon-4 */
-    --color-background: #DAFDBA;            /* Poseidon-1 */
-    --color-foreground: #012030;            /* Poseidon-5 */
-
-    --color-primary: #45C4B0;               /* Poseidon-3 */
-    --color-primary-foreground: #012030;    /* Poseidon-5 */
-
-    --color-secondary: #9AEBA3;             /* Poseidon-2 */
-    --color-secondary-foreground: #012030;  /* Poseidon-5 */
-
-    --color-destructive: #13678A;           /* Poseidon-4 */
-    --color-destructive-foreground: #DAFDBA;/* Poseidon-1 */
-
-    --color-muted: #9AEBA3;                 /* Poseidon-2 */
-    --color-muted-foreground: #13678A;      /* Poseidon-4 */
-
-    --color-accent: #45C4B0;                /* Poseidon-3 */
-    --color-accent-foreground: #012030;     /* Poseidon-5 */
-
-    --color-popover: #DAFDBA;               /* Poseidon-1 */
-    --color-popover-foreground: #012030;    /* Poseidon-5 */
-
-    --color-card: #9AEBA3;                  /* Poseidon-2 */
-    --color-card-foreground: #012030;       /* Poseidon-5 */
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
@@ -74,13 +49,26 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-        border-color: var(--color-gray-200, currentcolor);
-    }
+  :root {
+    --color-primary: #021373;
+    --color-secondary: #020F59;
+    --color-accent: #1F54BF;
+    --color-bg: #D0DCF2;
+    --color-info: #719ED9;
+    --color-text: #021373;
+    --color-text-secondary: #D0DCF2; 
+    --color-header: #020F59;
+    --color-link: #719ED9;
+    --color-link-hover: #1F54BF;
+    --color-border: #1F54BF;
+  }
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border, currentcolor);
+  }
 }
 
 @utility no-scrollbar {
@@ -97,49 +85,25 @@
 }
 
 @layer base {
-  :root {
-    /* Light mode */
-    --color-bg: #DAFDBA;      /* Poseidon-1 */
-    --color-bg-alt: #13678A;  /* Poseidon-4 */
-    --color-card: #13678A;    /* Poseidon-4 */
-    --color-text: #012030;    /* Poseidon-5 */
-    --color-accent: #45C4B0;  /* Poseidon-3 */
-    --color-header: #13678A;  /* Poseidon-4 */
-    --color-border: #45C4B0;  /* Poseidon-3 */
-  }
-
-  .dark {
-    --color-bg: #012030;      /* Poseidon-5 */
-    --color-bg-alt: #13678A;  /* Poseidon-4 */
-    --color-card: #13678A;    /* Poseidon-4 */
-    --color-text: #DAFDBA;    /* Poseidon-1 */
-    --color-accent: #45C4B0;  /* Poseidon-3 */
-    --color-header: #9AEBA3;  /* Poseidon-2 */
-    --color-border: #45C4B0;  /* Poseidon-3 */
-  }
 
   body {
     background: var(--color-bg);
     color: var(--color-text);
+    transition: background 0.2s, color 0.2s;
   }
 
   header, nav {
     background: var(--color-header);
     color: var(--color-text);
+    transition: background 0.2s, color 0.2s;
   }
 
-  .card-nav, .nav-card {
-    background: rgba(0, 0, 0, 0.1);
-    color: var(--color-text);
-    border-color: var(--color-border);
-  } 
-  
-  .nav-card-link {
-    color: rgb(1, 32, 48);
+  a {
+    color: var(--color-link);
+    transition: color 0.2s;
   }
-
-  a:hover, .nav-card-link:hover { 
-    color: var(--color-bg-alt);
+  a:hover {
+    color: var(--color-link-hover);
   }
 }
 
@@ -148,7 +112,7 @@
         @apply scroll-smooth;
     }
     h1 {
-        @apply scroll-m-20 text-4xl md:text-5xl font-extrabold tracking-tight;
+        @apply scroll-m-20 text-4xl md:text-5xl font-normal tracking-tight;
     }
     h2 {
         @apply scroll-m-20 text-3xl md:text-4xl font-bold tracking-tight;
@@ -215,202 +179,3 @@
 }
 
 */
-
-.card-nav-container {
-  position: absolute;
-  top: 1em;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  z-index: 99;
-  box-sizing: border-box;
-}
-
-.card-nav {
-  padding: 0;
-  background-color: rgba(19, 103, 138, 0.6);
-  border: 0.5px solid rgba(255, 255, 255, 0);
-  border-radius: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-  will-change: height; 
-}
-
-.card-nav-content {
-  display: grid !important;
-}
-.card-nav-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 0.45rem 0.55rem 1.1rem;
-  z-index: 2;
-}
-
-.hamburger-menu {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  gap: 6px;
-}
-
-.hamburger-menu:hover .hamburger-line {
-  opacity: 0.75;
-}
-
-.hamburger-line {
-  width: 30px;
-  height: 3px;
-  border-radius: 3px;
-  background-color: currentColor;
-  transition:
-    transform 0.25s ease,
-    opacity 0.2s ease,
-    margin 0.3s ease;
-  transform-origin: 50% 50%;
-}
-
-.hamburger-menu.open .hamburger-line:first-child {
-  transform: translateY(4px) rotate(45deg);
-}
-
-.hamburger-menu.open .hamburger-line:last-child {
-  transform: translateY(-4px) rotate(-45deg);
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.logo {
-  height: 28px;
-}
-
-.card-nav-cta-button {
-  background-color: #111;
-  color: white;
-  border: none;
-  border-radius: 2rem;
-  padding: 0 1rem;
-  height: 100%;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  align-items: center;
-}
-
-.card-nav-cta-button:hover {
-  background-color: #333;
-}
-
-.card-nav-content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 60px;
-  bottom: 0;
-  padding: 0.5rem;
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
-  background-color: rgb(19, 103, 138);
-  visibility: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.card-nav.open .card-nav-content {
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.nav-card {
-  background-color: white;
-  height: 100%;
-  min-width: 0;
-  border-radius: 2rem;
-  position: relative; 
-  display: flex;
-  flex-direction: column;
-  padding: 12px 16px;
-  gap: 8px;
-  user-select: none;
-}
-
-.nav-card-label { 
-  color: rgb(19, 103, 138);
-  font-size: 22px;
-  letter-spacing: -0.5px;
-}
-
-.nav-card-links {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.nav-card-link {
-  font-size: 16px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.nav-card-link:hover {
-  opacity: 0.75;
-}
-
-@media (max-width: 768px) {
-
-  .card-nav-top {
-    padding: 0.5rem 1rem;
-    justify-content: space-between;
-  }
-
-  .hamburger-menu {
-    order: 2;
-  }
-
-  .logo-container {
-    position: static;
-    transform: none;
-    order: 1;
-  }
-
-  .card-nav-cta-button {
-    display: none;
-  }
-
-  .nav-card {
-    height: auto;
-    min-height: 60px;
-    flex: 1 1 auto;
-    max-height: none;
-  }
-
-  .nav-card-label {
-    font-size: 18px;
-  }
-
-  .nav-card-link {
-    font-size: 15px;
-  }
-}

@@ -235,6 +235,9 @@ const GradualBlur: React.FC<PropsWithChildren<GradualBlurProps>> = props => {
       opacity: isVisible ? 1 : 0,
       transition: config.animated ? `opacity ${config.duration} ${config.easing}` : undefined,
       zIndex: isPageTarget ? config.zIndex + 100 : config.zIndex,
+      background: 'var(--color-bg)',
+      borderTop: config.position === 'bottom' ? '1px solid var(--color-border)' : undefined,
+      borderBottom: config.position === 'top' ? '1px solid var(--color-border)' : undefined,
       ...config.style
     };
 

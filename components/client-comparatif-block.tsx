@@ -1,31 +1,33 @@
-"use client";
-export default function ClientComparatifBlock({ options }: { options: any }) {
   return (
-    <section className="py-16 px-4 bg-secondary text-secondary-foreground">
-      <h2 className="text-2xl md:text-3xl font-title font-bold mb-6 text-primary">WordPress classique vs Headless + Next.js</h2>
-      <div className="overflow-x-auto">
-        <table className="min-w-[600px] w-full bg-card rounded-xl shadow text-left">
-          <thead>
-            <tr>
-              <th className="p-4">Critère</th>
-              <th className="p-4">WordPress classique</th>
-              <th className="p-4">Headless + Next.js</th>
-            </tr>
-          </thead>
-          <tbody>
-            {options.comparatif?.map((row: any, i: number) => (
-              <tr key={i} className="border-t border-border">
-                <td className="p-4">{row.critere}</td>
-                <td className="p-4">{row.wp_classique}</td>
-                <td className="p-4">{row.headless_nextjs}</td>
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-[var(--color-bg)] text-[var(--color-text)]">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold tracking-tight text-[var(--color-accent)] sm:text-4xl md:text-5xl mb-8">
+          {comparatif.title}
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-[var(--color-border)]">
+            <thead className="bg-[var(--color-bg-alt)]">
+              <tr>
+                {comparatif.headers.map((header: string, idx: number) => (
+                  <th key={idx} className="px-6 py-3 text-left text-xs font-medium text-[var(--color-info)] uppercase tracking-wider">
+                    {header}
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="mt-8 flex justify-center">
-        <button className="bg-accent text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold shadow-lg hover:bg-accent/90 transition">{options.comparatif_cta}</button>
+            </thead>
+            <tbody className="bg-[var(--color-bg)] divide-y divide-[var(--color-border)]">
+              {comparatif.rows.map((row: any, idx: number) => (
+                <tr key={idx}>
+                  {row.map((cell: any, i: number) => (
+                    <td key={i} className="px-6 py-4 whitespace-nowrap text-sm text-[var(--color-text)]">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );
-}

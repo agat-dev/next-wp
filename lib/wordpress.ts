@@ -474,6 +474,7 @@ export async function fetchWordpressPages(): Promise<
     label: string;
     bgColor: string;
     textColor: string;
+    slug?: string;
     links: { label: string; href: string; ariaLabel: string }[];
   }[]
 > {
@@ -489,7 +490,6 @@ export async function fetchWordpressPages(): Promise<
 
     // Trie les pages par menu_order
     const sortedPages = [...pages].sort((a, b) => (a.menu_order ?? 0) - (b.menu_order ?? 0));
-
     // Sélectionne les parents dans l'ordre WordPress
     const parents = sortedPages.filter(
       (p: any) => (!p.parent && p.slug !== "accueil") // exclut "accueil"
@@ -499,15 +499,14 @@ export async function fetchWordpressPages(): Promise<
       label: decodeHtml(parent.title.rendered),
       bgColor: "#000000",
       textColor: "#021373",
-      links: [
-        ...sortedPages
-          .filter((child: any) => child.parent === parent.id && child.slug !== "accueil")
-          .map((child: any) => ({
-            label: decodeHtml(child.title.rendered),
-            href: `/page/${child.slug}`,
-            ariaLabel: decodeHtml(child.title.rendered),
-          })),
-      ],
+      slug: parent.slug,
+      links: sortedPages
+        .filter((child: any) => child.parent === parent.id && child.slug !== "accueil")
+        .map((child: any) => ({
+          label: decodeHtml(child.title.rendered),
+          slug: child.slug,
+          ariaLabel: decodeHtml(child.title.rendered),
+        })),
     }));
   } catch {
     return [];

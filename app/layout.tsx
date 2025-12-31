@@ -2,8 +2,7 @@ import "./globals.css";
 
 import { ThemeProvider as CustomThemeProvider } from "@/components/theme/theme-provider";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
-import Navbar from "@/components/nav/nav-bar";
-import { MobileNav } from "@/components/nav/mobile-nav";
+import NavBar from "@/components/navbar";
 import { Analytics } from "@vercel/analytics/react";
 
 import { mainMenu, contentMenu } from "@/menu.config";
@@ -41,8 +40,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
-            <MobileNav />
+            <NavBar />
             {children}
             <Footer />
           </CustomThemeProvider>

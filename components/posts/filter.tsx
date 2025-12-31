@@ -1,28 +1,28 @@
 "use client";
-
-import { useRouter } from "next/navigation";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"; // Ensure this is the correct import path
-import { Button } from "@/components/ui/button"; // Add this import for the Button component
-
-interface Author {
-  id: number;
-  name: string;
-}
-
-interface Tag {
-  id: number;
-  name: string;
-}
-
-interface Category {
-  id: number;
-  name: string;
+  return (
+    <div className="flex flex-wrap gap-4 mb-8">
+      <select
+        className="px-4 py-2 rounded border border-[var(--color-border)] bg-[var(--color-bg-alt)] text-[var(--color-text)]"
+        value={selectedCategory}
+        onChange={(e) => onCategoryChange(e.target.value)}
+      >
+        <option value="">Toutes les catégories</option>
+        {categories.map((cat) => (
+          <option key={cat} value={cat}>{cat}</option>
+        ))}
+      </select>
+      <select
+        className="px-4 py-2 rounded border border-[var(--color-border)] bg-[var(--color-bg-alt)] text-[var(--color-text)]"
+        value={selectedTag}
+        onChange={(e) => onTagChange(e.target.value)}
+      >
+        <option value="">Tous les tags</option>
+        {tags.map((tag) => (
+          <option key={tag} value={tag}>{tag}</option>
+        ))}
+      </select>
+    </div>
+  );
 }
 
 interface FilterPostsProps {

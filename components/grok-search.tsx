@@ -50,15 +50,16 @@ export default function GrokSearch({ onResult }: GrokSearchProps) {
         onChange={e => setUrl(e.target.value)}
         disabled={loading}
       />
+      </div>
+      {error && <div className="text-red-500 mt-4">{error}</div>}
       <button
         type="submit"
-        className="bg-white text-foreground px-8 py-2 rounded-lg text-lg font-semibold shadow-lg hover:bg-white/60 transition"
+        className="mt-8 px-6 py-2 rounded bg-(--color-accent) text-(--color-bg) font-semibold hover:bg-(--color-accent)/90 transition"
         disabled={loading}
       >
-        {loading ? "Analyse en cours..." : "Tester mon site"}
+        {loading ? "Analyse..." : "Analyser"}
       </button>
-      </div>
-      {error && <span className="text-red-500 ml-4">{error}</span>}
     </form>
+
   );
 }

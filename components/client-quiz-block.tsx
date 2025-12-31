@@ -1,8 +1,8 @@
 "use client";
 export default function ClientQuizBlock({ options }: { options: any }) {
   return (
-    <section id="quiz" className="py-16 px-4 bg-background text-foreground">
-      <h2 className="text-2xl md:text-3xl font-title font-bold mb-6 text-primary">Quiz express</h2>
+    <section id="quiz" className="py-16 px-4 bg-[var(--color-bg)] text-[var(--color-text)]">
+      <h2 className="text-2xl md:text-3xl font-title font-bold mb-6 text-[var(--color-accent)]">Quiz express</h2>
       <div className="bg-card rounded-xl shadow p-6 max-w-2xl mx-auto">
         <p className="mb-4">Répondez à 3 questions pour savoir si votre site vous freine.</p>
         {/* Quiz dynamique */}
