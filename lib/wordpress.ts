@@ -504,7 +504,7 @@ export async function fetchWordpressPages(): Promise<
         .filter((child: any) => child.parent === parent.id && child.slug !== "accueil")
         .map((child: any) => ({
           label: decodeHtml(child.title.rendered),
-          slug: child.slug,
+          href: '/' + child.slug,
           ariaLabel: decodeHtml(child.title.rendered),
         })),
     }));
