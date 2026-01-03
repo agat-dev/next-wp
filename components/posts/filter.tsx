@@ -1,3 +1,6 @@
+
+"use client";
+
 // Types locaux pour contourner le problème d'import
 interface Author {
   id: number;
