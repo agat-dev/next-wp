@@ -1,6 +1,5 @@
 
 import Link from "next/link";
-import React from "react";
 import Image from "next/image";
 import {
   NavigationMenu,
@@ -84,8 +83,8 @@ export default async function Navbar() {
                               className={`grid grid-rows-${globalMaxRows} col-span-2 items-start justify-items-start`}
                             >
                               {links.map((link) => (
-                                <li key={link.slug} className="w-full justify-self-start self-start ">
-                                  <ListItem href={`/${link.slug}`} title={link.label}>
+                                <li key={link.href} className="w-full justify-self-start self-start ">
+                                  <ListItem href={link.href} title={link.label}>
                                     <span className="font-title" aria-label={link.ariaLabel}>{link.label}</span>
                                   </ListItem>
                                 </li>
