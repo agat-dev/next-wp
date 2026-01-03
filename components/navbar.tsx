@@ -17,7 +17,7 @@ export default async function Navbar() {
   // Récupère la structure des pages WordPress (parents + enfants)
   const menuGroups = await fetchWordpressPages();
   // Calcule la largeur et la hauteur max nécessaires pour tous les sous-menus
-  function getMaxTextLength(arr) {
+  function getMaxTextLength(arr: { label: string }[]) {
     return arr.reduce((max, l) => l.label.length > max ? l.label.length : max, 0);
   }
   let globalMaxColWidth = 14; // min 14rem
