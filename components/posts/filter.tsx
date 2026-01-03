@@ -1,29 +1,49 @@
-"use client";
-  return (
-    <div className="flex flex-wrap gap-4 mb-8">
-      <select
-        className="px-4 py-2 rounded border border-[var(--color-border)] bg-[var(--color-bg-alt)] text-[var(--color-text)]"
-        value={selectedCategory}
-        onChange={(e) => onCategoryChange(e.target.value)}
-      >
-        <option value="">Toutes les catégories</option>
-        {categories.map((cat) => (
-          <option key={cat} value={cat}>{cat}</option>
-        ))}
-      </select>
-      <select
-        className="px-4 py-2 rounded border border-[var(--color-border)] bg-[var(--color-bg-alt)] text-[var(--color-text)]"
-        value={selectedTag}
-        onChange={(e) => onTagChange(e.target.value)}
-      >
-        <option value="">Tous les tags</option>
-        {tags.map((tag) => (
-          <option key={tag} value={tag}>{tag}</option>
-        ))}
-      </select>
-    </div>
-  );
+// Types locaux pour contourner le problème d'import
+interface Author {
+  id: number;
+  name: string;
+  url: string;
+  description: string;
+  link: string;
+  slug: string;
+  avatar_urls: Record<string, string>;
+  meta: Record<string, unknown>;
 }
+
+interface Tag {
+  id: number;
+  count: number;
+  description: string;
+  link: string;
+  name: string;
+  slug: string;
+  meta: Record<string, unknown>;
+  taxonomy: "post_tag";
+}
+
+interface Category {
+  id: number;
+  count: number;
+  description: string;
+  link: string;
+  name: string;
+  slug: string;
+  meta: Record<string, unknown>;
+  taxonomy: "category";
+  parent: number;
+}
+"use client";
+
+import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "../ui/select";
+
 
 interface FilterPostsProps {
   authors: Author[];
@@ -49,7 +69,6 @@ export function FilterPosts({
     const newParams = new URLSearchParams(window.location.search);
     newParams.delete("page");
     value === "all" ? newParams.delete(type) : newParams.set(type, value);
-
     router.push(`/posts?${newParams.toString()}`);
   };
 
@@ -65,7 +84,7 @@ export function FilterPosts({
     <div className="grid md:grid-cols-[1fr_1fr_1fr_0.5fr] gap-2 my-4 z-10!">
       <Select
         value={selectedTag || "all"}
-        onValueChange={(value) => handleFilterChange("tag", value)}
+        onValueChange={(value: string) => handleFilterChange("tag", value)}
       >
         <SelectTrigger disabled={!hasTags}>
           {hasTags ? <SelectValue placeholder="All Tags" /> : "No tags found"}
@@ -82,7 +101,7 @@ export function FilterPosts({
 
       <Select
         value={selectedCategory || "all"}
-        onValueChange={(value) => handleFilterChange("category", value)}
+        onValueChange={(value: string) => handleFilterChange("category", value)}
       >
         <SelectTrigger disabled={!hasCategories}>
           {hasCategories ? (
@@ -103,7 +122,7 @@ export function FilterPosts({
 
       <Select
         value={selectedAuthor || "all"}
-        onValueChange={(value) => handleFilterChange("author", value)}
+        onValueChange={(value: string) => handleFilterChange("author", value)}
       >
         <SelectTrigger disabled={!hasAuthors} className="text-center">
           {hasAuthors ? (

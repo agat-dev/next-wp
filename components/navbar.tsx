@@ -56,42 +56,37 @@ export default async function Navbar() {
                     <NavigationMenuTrigger className="text-white/80 text-base font-title font-light hover:text-white">
                       {group.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="bg-(--color-text-secondary) text-white/80 mt-0 left-1/2 -translate-x-1/2 absolute">
+                    <NavigationMenuContent className="bg-(--color-text-secondary) text-white/80 mt-0 rounded-l-2xl left-1/2 -translate-x-1/2 absolute">
                       {(() => {
                         return (
                           <ul
-                            className={`grid grid-cols-2 gap-4 p-2 justify-center items-start`}
+                            className={`grid grid-cols-3 gap-4 p-2 justify-center items-start`}
                             style={{ minWidth: `${globalMaxColWidth * 2}rem`, maxWidth: `${globalMaxColWidth * 2}rem`, minHeight: `${globalMaxRows * 3}rem` }}
                           >
                             {/* Colonne principale à gauche */}
                             <li
                               key="main"
-                              className={`row-span-${Math.max(3, links.length)} h-full w-full`}
-                              style={{ minWidth: `${globalMaxColWidth}rem`, maxWidth: `${globalMaxColWidth}rem` }}
+                              className={`row-span-${Math.max(3, links.length)} col-span-1 h-full w-full`}
                             >
                               <NavigationMenuLink asChild>
                                 <Link
-                                  className={`flex h-full w-full flex-col justify-end p-4 bg-(--color-header) no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md`}
+                                  className={`flex h-full w-full flex-col justify-end p-4 bg-(--color-header) rounded-l-2xl no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md`}
                                   href={group.slug ? `/${group.slug}` : '#'}
                                 >
-                                  <div className="mb-2 text-lg font-medium sm:mt-4 text-white/80">
+                                  <div className="mb-2 font-light sm:mt-4 text-white/80 font-title text-2xl">
                                     {group.label}
                                   </div>
-                                  <p className="text-white/80 text-sm leading-tight">
-                                    {links[0]?.label || ''}
-                                  </p>
                                 </Link>
                               </NavigationMenuLink>
                             </li>
                             {/* Liens enfants sur une colonne à droite */}
                             <ul
-                              className={`grid grid-rows-${globalMaxRows} items-start justify-items-start`}
-                              style={{ minWidth: `${globalMaxColWidth}rem`, maxWidth: `${globalMaxColWidth}rem` }}
+                              className={`grid grid-rows-${globalMaxRows} col-span-2 items-start justify-items-start`}
                             >
                               {links.map((link) => (
-                                <li key={link.slug} className="w-full justify-self-start self-start">
+                                <li key={link.slug} className="w-full justify-self-start self-start ">
                                   <ListItem href={`/${link.slug}`} title={link.label}>
-                                    {link.ariaLabel}
+                                    <span className="font-title" aria-label={link.ariaLabel}>{link.label}</span>
                                   </ListItem>
                                 </li>
                               ))}

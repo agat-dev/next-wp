@@ -17,9 +17,6 @@
 }
 
 @theme {
-    --font-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
 
     /* Poseidon Color Theme */
 
@@ -61,6 +58,7 @@
     --color-link: #719ED9;
     --color-link-hover: #1F54BF;
     --color-border: #1F54BF;
+    
   }
   *,
   ::after,

@@ -9,6 +9,6 @@ h1, h2, h3, h4, h5, h6, .font-title {
   font-family: var(--font-title);
 }
 
-body, p, li, span, div, .font-text {
+body, p, li, span, .font-text {
   font-family: var(--font-text);
 }
