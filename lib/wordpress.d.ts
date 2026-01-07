@@ -1,4 +1,42 @@
 // Common types that are reused across multiple entities
+export interface WPEntity {
+  id: number;
+  date: string;
+  date_gmt: string;
+  modified: string;
+  modified_gmt: string;
+  slug: string;
+  status: "publish" | "future" | "draft" | "pending" | "private";
+  link: string;
+  guid: {
+    rendered: string;
+  };
+}
+
+export interface RenderedContent {
+  rendered: string;
+  protected: boolean;
+}
+
+export interface RenderedTitle {
+  rendered: string;
+}
+
+export interface MediaSize {
+  file: string;
+  width: number;
+  height: number;
+  mime_type: string;
+  source_url: string;
+}
+
+export interface MediaDetails {
+  width: number;
+  height: number;
+  file: string;
+  sizes: Record<string, MediaSize>;
+}
+// Common types that are reused across multiple entities
 interface WPEntity {
   id: number;
   date: string;
@@ -93,7 +131,7 @@ export interface Page extends WPEntity {
 }
 
 // Taxonomy types
-interface Taxonomy {
+export interface Taxonomy {
   id: number;
   count: number;
   description: string;
@@ -124,7 +162,7 @@ export interface Author {
 }
 
 // Block types
-interface BlockSupports {
+export interface BlockSupports {
   align?: boolean | string[];
   anchor?: boolean;
   className?: boolean;
@@ -144,7 +182,7 @@ interface BlockSupports {
   [key: string]: unknown;
 }
 
-interface BlockStyle {
+export interface BlockStyle {
   name: string;
   label: string;
   isDefault: boolean;

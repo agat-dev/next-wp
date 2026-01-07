@@ -1,9 +1,6 @@
 import { getOptions } from "@/lib/options";
 import ClientHeroBlock from "@/components/client-hero-block";
-import ClientQuizBlock from "@/components/client-quiz-block";
-import ClientComparatifBlock from "@/components/client-comparatif-block";
-import ClientAboutBlock from "@/components/client-about-block";
-import ClientArticlesBlock from "@/components/client-articles-block";
+import ClientExplainationBlock from "@/components/client-explaination-block";
 
 export default async function HomePage() {
   const options = await getOptions();
@@ -14,14 +11,11 @@ export default async function HomePage() {
       </main>
     );
 
+  console.log(options);
   return (
     <>
       <ClientHeroBlock options={options} />
-      <ClientQuizBlock options={options} />
-      <ClientComparatifBlock options={options} />
-      <ClientAboutBlock options={options} />
-      <ClientArticlesBlock options={options} />
-
+      <ClientExplainationBlock cards={options.explanations} /> 
     </>
   );
-}
+} 

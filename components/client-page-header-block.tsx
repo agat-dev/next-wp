@@ -18,7 +18,7 @@ export default function ClientPageHeaderBlock({ pages }: { pages: any }) {
       />
       {/* Hero */}
       <section className="md:w-8xl mx-auto relative z-10 h-64 flex flex-col items-center justify-center px-8 text-center pt-(--nav-height,64px) text-(--color-text)">
-        <h1 className="text-4xl md:text-5xl font-title mb-12 text-(--color-text-secondary)/80">
+        <h1 className="text-4xl md:text-5xl font-heading mb-12 text-(--color-text-secondary)/80">
           {pages.title.rendered}
         </h1>
         <div className="h-full">
