@@ -1,5 +1,6 @@
 import { getOptions } from "@/lib/options";
 import ClientHeroBlock from "@/components/client-hero-block";
+import ClientExplainationBlock from "@/components/client-explaination-block";
 
 export default async function HomePage() {
   const options = await getOptions();
@@ -10,9 +11,11 @@ export default async function HomePage() {
       </main>
     );
 
+  console.log(options);
   return (
     <>
       <ClientHeroBlock options={options} />
+      <ClientExplainationBlock cards={options.explanations} /> 
     </>
   );
-}
+} 

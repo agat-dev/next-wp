@@ -37,7 +37,7 @@ export default function GrokSearch({ onResult }: GrokSearchProps) {
         Est-ce le moment de passer au Headless ? 
         <div className="mt-4 font-light text-lg">Entrez l'URL de votre site WordPress pour une analyse rapide : </div>
       </label>
-      <div className="flex justify-center items-center gap-8 mt-8">
+      <div className="flex justify-center items-center gap-8">
       <input
         type="url"
         name="wp_url"
@@ -54,7 +54,7 @@ export default function GrokSearch({ onResult }: GrokSearchProps) {
       {error && <div className="text-red-500 mt-4">{error}</div>}
       <button
         type="submit"
-        className="mt-8 px-6 py-2 rounded bg-(--color-accent) text-(--color-bg) font-semibold hover:bg-(--color-accent)/90 transition"
+        className="px-6 py-2 rounded-2xl bg-(--color-primary) text-lg text-white/90 hover:bg-(--color-primary)/90 transition"
         disabled={loading}
       >
         {loading ? "Analyse..." : "Analyser"}

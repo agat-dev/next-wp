@@ -4,9 +4,16 @@ const baseUrl = process.env.WORDPRESS_URL;
 
 export interface WPHeadlessOptions {
   hero_title: string;
+  hero_title_line: string;
   hero_subtitle: string;
   hero_cta: string;
   hero_image: string;
+  explanations: Array<{
+    question: string;
+    image: string;
+    ctas: Array<{ cta_text: string; cta_link: string }>;
+    answer: Node;
+  }>;
   quiz: {
     questions: { question: string; options: string[] }[];
     cta: string;
