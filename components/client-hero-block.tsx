@@ -1,15 +1,9 @@
 "use client";
-import ClientGrokBlock from "@/components/client-grok-block";
+import ClientGeminiBlock from "@/components/client-gemini-block";
 import Threads from "@/components/ui/threads";
 import Image from "next/image";
 
 export default function ClientHeroBlock({ options }: { options: any }) {
-  const { scrollY } = useScroll();
-  const grokSectionY = useTransform(scrollY, [0, 600], [0, 0]);
-  const grokSectionScale = useTransform(scrollY, [0, 600], [0.8, 1]);
-  const grokSectionWidth = useTransform(scrollY, [0, 600], ["100%", "195%"]);
-  const grokSectionPadding = useTransform(scrollY, [0, 600], ["1.5rem", "0.5rem"]);
-
 
   return (
     <main className="min-h-screen relative overflow-hidden">
@@ -42,7 +36,7 @@ export default function ClientHeroBlock({ options }: { options: any }) {
               )}
             </p>
 
-            <div className="flex items-center gap-6 mt-6">
+            <div className="max-w-30 sm:max-w-full flex items-center gap-6 mt-6">
               <Image
                 src="/img/logo-wordpress-blanc.png"
                 alt="Logo WordPress"
@@ -60,9 +54,9 @@ export default function ClientHeroBlock({ options }: { options: any }) {
 
           {/* Hero Image */}
           <div className="relative lg:col-span-5 z-20">
-            <div className="relative rounded-xl overflow-hidden aspect-square max-w-md mx-auto">
+            <div className="relative rounded-xl overflow-hidden aspect-square  mx-auto">
               {/* Placeholder for profile image - replace with actual image */}
-              <div className="bg-linear-to-br from-brand-400/80 to-brand-600/80 w-full h-full flex items-center justify-center">
+              <div className="bg-linear-to-br from-brand-400/80 to-brand-600/80 w-md h-full flex items-center justify-center">
                 <Image
                   src={options.hero_bg_image} // Replace with your image path
                   alt="Profile"
@@ -78,7 +72,7 @@ export default function ClientHeroBlock({ options }: { options: any }) {
                   Disponible
                 </span>
               </div>
-              <div className="absolute right-0 bottom-12 bg-white py-2 px-4 rounded-full shadow-lg animate-float-delayed">
+              <div className="absolute right-0 bottom-24 bg-white sm:-mr-12 pr-8 sm:pr-16 py-2 px-4 rounded-full shadow-lg animate-float-delayed z-50 border border-gray-200">
                 <span className="text-sm font-medium text-black">
                   8+ ans d'expérience
                 </span>
@@ -91,22 +85,10 @@ export default function ClientHeroBlock({ options }: { options: any }) {
 
 
       <section
-        className="md:w-8xl mt-24 mx-auto relative z-10 flex flex-col items-center justify-center px-8 text-center pt-(--nav-height,64px) text-(--color-text)"
+        className="md:w-8xl md:-mt-28 xl:-mt-20 mx-auto relative flex flex-col items-center justify-center px-2 sm:px-8 text-center pt-(--nav-height,64px) text-(--color-text) z-30"
       >
         <div className="h-full">
-          <motion.div 
-            id="grok-search-form" 
-            className="flex flex-col gap-4 mx-auto pb-12"
-            style={{ 
-              y: grokSectionY, 
-              scale: grokSectionScale,
-              width: grokSectionWidth,
-              paddingLeft: grokSectionPadding,
-              paddingRight: grokSectionPadding
-            }}
-          >
-          <ClientGrokBlock />
-          </motion.div>
+          <ClientGeminiBlock />
         </div>
       </section>
     </main>

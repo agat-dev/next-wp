@@ -498,6 +498,8 @@ export async function fetchWordpressPages(): Promise<
     return parents.map((parent: any) => ({
       label: decodeHtml(parent.title.rendered),
       slug: parent.slug,
+      bgColor: parent.bgColor || "#fff", // valeur par défaut
+      textColor: parent.textColor || "#000", // valeur par défaut
       links: sortedPages
         .filter((child: any) => child.parent === parent.id && child.slug !== "accueil")
         .map((child: any) => ({

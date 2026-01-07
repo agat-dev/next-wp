@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
 export default function ExplainationBlock({ cards }: { cards: any[] }) {
-  console.log(cards);
   const [wpCardsState, setWpCardsState] = useState<any[]>([]);
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
@@ -109,11 +108,11 @@ export default function ExplainationBlock({ cards }: { cards: any[] }) {
 
                   <motion.a
                     layoutId={`button-${active.question}-${id}`}
-                    href={active.ctas[0].cta_link}
+                    href={active.ctas.cta_link}
                     target="_blank"
                     className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
                   >
-                    {active.ctas[0].cta_text}
+                    {active.ctas.cta_text}
                   </motion.a>
                 </div>
                 <div className="pt-4 relative px-4">
@@ -135,7 +134,7 @@ export default function ExplainationBlock({ cards }: { cards: any[] }) {
         ) : null}
       </AnimatePresence>
       <ul className="max-w-2xl mx-auto w-full gap-4">
-        {wpCardsState.map((card, index) => (
+        {cards.map((card, index) => (
           <motion.div
             layoutId={`card-${card.question}-${id}`}
             key={`card-${card.question}-${id}`}

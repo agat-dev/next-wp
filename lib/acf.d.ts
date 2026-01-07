@@ -30,7 +30,6 @@ export interface ACFGuide {
   risques?: ACFGuideRisque[];
 }
 
-// Étendre selon les autres groupes ACF si besoin
 
 // Union pour tous les groupes ACF principaux
 export type ACFFields = ACFArticle & ACFGuide;

@@ -10,8 +10,7 @@ export default async function HomePage() {
         Erreur de chargement des données WordPress.
       </main>
     );
-
-  console.log(options);
+    
   return (
     <>
       <ClientHeroBlock options={options} />
