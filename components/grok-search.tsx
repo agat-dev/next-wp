@@ -32,10 +32,10 @@ export default function GrokSearch({ onResult }: GrokSearchProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="md:w-full flex flex-col gap-8 justify-center items-center mb-8 bg-white/80 p-16 rounded-2xl shadow-lg mx-auto">
-      <label htmlFor="wp_url" className="text-2xl font-title font-semibold text-foreground">
+    <form onSubmit={handleSubmit} className="md:w-full flex flex-col gap-8 justify-center items-center mb-8 bg-white/80 p-18 rounded-2xl shadow-lg mx-auto">
+      <label htmlFor="wp_url" className="text-3xl font-title font-semibold text-foreground">
         Est-ce le moment de passer au Headless ? 
-        <div className="mt-4 font-light text-lg">Entrez l'URL de votre site WordPress pour une analyse rapide : </div>
+        <div className="mt-8 font-normal text-2xl">Entrez l'URL de votre site WordPress pour une analyse rapide : </div>
       </label>
       <div className="flex justify-center items-center gap-8 mt-8">
       <input

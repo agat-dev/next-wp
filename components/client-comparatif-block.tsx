@@ -1,3 +1,8 @@
+  export default function ClientComparatifBlock({ options }: { options: any }) {
+  const comparatif = options.comparatif;
+  if (!comparatif) return null;
+  
+  
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-[var(--color-bg)] text-[var(--color-text)]">
       <div className="container mx-auto px-4">
@@ -31,3 +36,5 @@
       </div>
     </section>
   );
+
+}

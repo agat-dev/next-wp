@@ -17,6 +17,11 @@ export default async function HomePage() {
   return (
     <>
       <ClientHeroBlock options={options} />
+      <ClientQuizBlock options={options} />
+      <ClientComparatifBlock options={options} />
+      <ClientAboutBlock options={options} />
+      <ClientArticlesBlock options={options} />
+
     </>
   );
 }
