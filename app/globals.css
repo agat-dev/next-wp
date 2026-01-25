@@ -20,6 +20,15 @@
 @theme {
 
     /* Poseidon Color Theme */
+    --color-darkblue: #020F59;
+    --color-mediumblue: #021373;
+    --color-regularblue: #1F54BF;
+    --color-lightblue: #719ED9;
+    --color-extralightblue: #D0DCF2;
+    --color-white: #FFFFFF;
+    --color-orange: #F29F05;
+    --color-coral: #FF6B6B;
+    --color-lightyellow: #F2E57E;
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
@@ -48,6 +57,18 @@
 */
 @layer base {
   :root {
+    /* Theme Primary Colors */
+    --color-darkblue: #020F59;
+    --color-mediumblue: #021373;
+    --color-regularblue: #1F54BF;
+    --color-lightblue: #719ED9;
+    --color-extralightblue: #D0DCF2;
+    --color-white: #FFFFFF;
+    --color-orange: #F29F05;
+    --color-coral: #FF6B6B;
+    --color-lightyellow: #F2E57E;
+
+    /* Legacy Color Variables */
     --color-primary: #021373;
     --color-secondary: #020F59;
     --color-accent: #1F54BF;
@@ -59,7 +80,6 @@
     --color-link: #719ED9;
     --color-link-hover: #1F54BF;
     --color-border: #1F54BF;
-    
   }
   *,
   ::after,
@@ -88,27 +108,19 @@
 @layer base {
 
   body {
-    background: var(--color-bg);
-    color: var(--color-text);
     transition: background 0.2s, color 0.2s;
   }
 
   header, nav {
-    background: var(--color-header);
-    color: var(--color-text);
     transition: background 0.2s, color 0.2s;
   }
 
   a {
-    color: var(--color-link);
     transition: color 0.2s;
-  }
-  a:hover {
-    color: var(--color-link-hover);
   }
 }
 
-@layer base {
+@layer theme {
     * {
         @apply scroll-smooth;
     }

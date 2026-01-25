@@ -39,32 +39,32 @@ export async function POST(request: NextRequest) {
       );
 
       // Revalidate specific content type tags
-      revalidateTag("wordpress", {});
+      revalidateTag("wordpress");
 
       if (contentType === "post") {
-        revalidateTag("posts", {});
+        revalidateTag("posts");
         if (contentId) {
-          revalidateTag(`post-${contentId}`, {});
+          revalidateTag(`post-${contentId}`);
         }
         // Clear all post pages when any post changes
-        revalidateTag("posts-page-1", {});
+        revalidateTag("posts-page-1");
       } else if (contentType === "category") {
-        revalidateTag("categories", {});
+        revalidateTag("categories");
         if (contentId) {
-          revalidateTag(`posts-category-${contentId}`, {});
-          revalidateTag(`category-${contentId}`, {});
+          revalidateTag(`posts-category-${contentId}`);
+          revalidateTag(`category-${contentId}`);
         }
       } else if (contentType === "tag") {
-        revalidateTag("tags", {});
+        revalidateTag("tags");
         if (contentId) {
-          revalidateTag(`posts-tag-${contentId}`, {});
-          revalidateTag(`tag-${contentId}`, {});
+          revalidateTag(`posts-tag-${contentId}`);
+          revalidateTag(`tag-${contentId}`);
         }
       } else if (contentType === "author" || contentType === "user") {
-        revalidateTag("authors", {});
+        revalidateTag("authors");
         if (contentId) {
-          revalidateTag(`posts-author-${contentId}`, {});
-          revalidateTag(`author-${contentId}`, {});
+          revalidateTag(`posts-author-${contentId}`);
+          revalidateTag(`author-${contentId}`);
         }
       }
 

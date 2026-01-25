@@ -4,6 +4,8 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import Image from "next/image";
+import { Section } from "lucide-react";
+import SectionTitle from "./block-parts/section-title";
 
 export default function ExplainationBlock({ cards }: { cards: any[] }) {
   const [wpCardsState, setWpCardsState] = useState<any[]>([]);
@@ -34,14 +36,7 @@ export default function ExplainationBlock({ cards }: { cards: any[] }) {
 
   return (
     <section className="container py-12 px-4 lg:px-0">
-      <div className="pt-24 pb-12">
-        <h2 className="text-4xl tracking-tight text-center font-medium text-regularblue">
-          WordPress Headless : quelques explications ?
-        </h2>
-        <p className="font-normal text-lg text-center text-foreground/80">
-          Un site combinant performance et le back-office le plus utilisé.
-        </p>
-      </div>
+      <SectionTitle title="WordPress Headless : quelques explications ?" subtitle="Un site combinant performance et le back-office le plus utilisé." />
       <AnimatePresence>
         {active && typeof active === "object" && (
           <motion.div
