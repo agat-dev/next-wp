@@ -1,7 +1,7 @@
 import { getOptions } from "@/lib/options";
-import ClientHeroBlock from "@/components/client-hero-block";
+import ClientHeroBlock from "@/components/home/client-hero-block";
 import ClientExplainationBlock from "@/components/client-explaination-block";
-import ClientComparatifBlock from "@/components/client-comparatif-block";
+import ClientComparatifBlock from "@/components/home/client-comparatif-block";
 
 export default async function HomePage() {
   const options = await getOptions();
@@ -11,8 +11,6 @@ export default async function HomePage() {
         Erreur de chargement des données WordPress.
       </main>
     );
-
-    console.warn("Options récupérées pour la page d'accueil :", options);
 
   // Transformer les données comparatif au format attendu par le composant
   const comparatifFormatted = {
@@ -32,7 +30,6 @@ export default async function HomePage() {
     <>
       <ClientHeroBlock options={options} />
       <ClientExplainationBlock cards={options.explanations} /> 
-      <ClientComparatifBlock comparatif={comparatifFormatted} />
     </>
   );
 } 

@@ -4,7 +4,6 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import Image from "next/image";
-import { Section } from "lucide-react";
 import SectionTitle from "./block-parts/section-title";
 
 export default function ExplainationBlock({ cards }: { cards: any[] }) {
@@ -35,7 +34,7 @@ export default function ExplainationBlock({ cards }: { cards: any[] }) {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <section className="container py-12 px-4 lg:px-0">
+    <section className="py-12 bg-gradient-to-b from-extralightblue to-transparent">
       <SectionTitle title="WordPress Headless : quelques explications ?" subtitle="Un site combinant performance et le back-office le plus utilisé." />
       <AnimatePresence>
         {active && typeof active === "object" && (
@@ -90,13 +89,13 @@ export default function ExplainationBlock({ cards }: { cards: any[] }) {
                   <div className="w-full flex flex-col gap-4">
                     <motion.h3
                       layoutId={`title-${active.question}-${id}`}
-                      className="font-medium text-primary dark:text-neutral-200"
+                      className="font-medium text-regularblue text-2xl"
                     >
                       {active.question}
                     </motion.h3>
                     <motion.p
                       layoutId={`description-${active.answer}-${id}`}
-                      className="prose max-w-none text-neutral-600 dark:text-neutral-400"
+                      className="prose max-w-none"
                       dangerouslySetInnerHTML={{ __html: active.answer }}
                     />                    
                     <motion.a

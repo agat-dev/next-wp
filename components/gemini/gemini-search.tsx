@@ -45,13 +45,13 @@ export default function GeminiSearch({ onResult, prompt }: GeminiSearchProps) {
 
   return (
     <>
-    <form onSubmit={handleSubmit} className="w-4xl mx-auto flex flex-col gap-4 p-6 bg-white/90 backdrop-blur-md rounded-2xl shadow">
-      <h2 className="text-3xl font-semibold mb-2 text-(--color-text)">Audit d&rsquo;opportunité de migration Headless
+    <form onSubmit={handleSubmit} className="w-3xl mx-auto flex flex-col gap-8 p-10 bg-white/90 backdrop-blur-md rounded-2xl shadow">
+      <h2 className="text-4xl font-medium mb-2 text-regularblue">Analyse d&rsquo;opportunité<br /> de migration Headless
       </h2>
-      <label htmlFor="gemini_url" className="font-medium text-lg">URL WordPress à analyser</label>
+      <label htmlFor="gemini_url" className="font-medium text-lg">Entrez l&rsquo;URL de votre site WordPress pour recevoir une analyse détaillée des bénéfices potentiels d&rsquo;une migration vers une architecture headless, incluant performance, sécurité et flexibilité.</label>
       <input
         id="gemini_url"
-        className="border rounded p-2"
+        className="border rounded-xl p-2"
         value={url}
         onChange={e => setUrl(e.target.value)}
         placeholder="Votre URL WordPress à analyser..."
