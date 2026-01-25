@@ -16,9 +16,9 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "WordPress & Next.js Starter by 9d8",
+  title: "Next Impact - WordPress Headless CMS Hub",
   description:
-    "A starter template for Next.js with WordPress as a headless CMS.",
+    "Tout ce dont vous avez besoin pour votre projet WordPress headless.",
   metadataBase: new URL(siteConfig.site_domain),
   alternates: {
     canonical: "/",
