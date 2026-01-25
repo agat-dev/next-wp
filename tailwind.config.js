@@ -7,5 +7,19 @@ module.exports = withMT({
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  theme: {
+    extend: {
+      typography: () => ({
+        DEFAULT: { css: {} },
+        invert: { css: {} },
+      }),
+    },
+  },
+  corePlugins: {
+    ringWidth: false,
+    ringColor: false,
+    ringOffsetWidth: false,
+    ringOffsetColor: false,
+  },
   plugins: [],
 });

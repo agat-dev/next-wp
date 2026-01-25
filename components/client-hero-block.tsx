@@ -74,7 +74,7 @@ export default function ClientHeroBlock({ options }: { options: any }) {
               </div>
               <div className="absolute right-0 bottom-24 bg-white sm:-mr-12 pr-8 sm:pr-16 py-2 px-4 rounded-full shadow-lg animate-float-delayed z-50 border border-gray-200">
                 <span className="text-sm font-medium text-black">
-                  8+ ans d'expérience
+                  8+ ans d&rsquo;expérience
                 </span>
               </div>
 

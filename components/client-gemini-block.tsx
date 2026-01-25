@@ -8,72 +8,89 @@ const GeminiSearch = dynamic(() => import("@/components/gemini/gemini-search"));
 
 export default function ClientGeminiBlock() {
   
-  const prompt = `Analyse le site WordPress suivant : {$url}
-En tant qu'expert en architecture web et WordPress, réalise un résumé exécutif pour évaluer l'opportunité d'une migration vers une architecture headless.
-Méthodologie d'analyse
+  const prompt = `**Mission :** Audit stratégique de l'URL **{$url}** pour évaluer la pertinence d'une migration vers une architecture Headless.
 
-Analyse technique du site :Inspecte le code source pour identifier la stack technique (thème, plugins visibles)
-Évalue les performances actuelles via les données disponibles
-Identifie les fonctionnalités critiques utilisées
-Collecte de métriques :Utilise web search pour récupérer les Core Web Vitals du site via des outils publics si possible
-Analyse la structure des pages et la complexité du frontend
-Évalue le volume de contenu apparent
-Benchmarking :Compare avec des sites similaires en headless
-Recherche des cas d'études pertinents dans le même secteur
-Format de réponse attendu
-Structure ta réponse selon ce format :
-Résumé exécutif et indicateurs clés
-Synthèse de la recommandation
-Verdict : [Headless recommandé / Non recommandé / Approche hybride]
-Niveau de priorité : [Critique / Élevé / Moyen / Faible]
-Complexité estimée : [Faible / Moyenne / Élevée]
-Justification en 2-3 phrases
-Déatails de l'analyse
-Performance
-Temps de chargement actuel : [mesure] → projection headless : [estimation]
-Score Lighthouse actuel : [si disponible] → projection : [estimation]
-Core Web Vitals (LCP, FID, CLS) : état actuel et projections
-Potentiel d'amélioration en % : [calcul]
-Business (estimations basées sur des benchmarks)
-Impact estimé sur le taux de conversion : [fourchette en %]
-Réduction potentielle du taux de rebond : [fourchette en %]
-Amélioration SEO potentielle : [qualitative + quantitative si possible]
-Impact infrastructure : [économie ou surcoût estimé en €/mois]
-Technique
-Gains de déploiement estimés : [en %]
-Amélioration de la sécurité : [niveau : faible/moyen/élevé]
-Time to Market : [amélioration estimée]
-Scalabilité : [évaluation du gain]
-ROI estimé
-Investissement initial : [250€ par jours/homme]
-Coûts récurrents annuels : [estimation]
-Retour sur investissement : [estimation en mois]
-Gains de conversion cumulés sur 3 ans : [projection en pourcentage]
-Risques majeurs identifiés
-[Risque 1 - Criticité : Haute/Moyenne/Faible] - Mitigation : [solution]
-[Risque 2 - Criticité] - Mitigation : [solution]
-[Risque 3 - Criticité] - Mitigation : [solution]
-Points d'attention spécifiques au site
-Liste des fonctionnalités critiques détectées qui nécessiteraient une attention particulière
-Plugins ou intégrations qui compliqueraient la migration
-Opportunités uniques identifiées
-Critères d'évaluation
-Base tes estimations sur :
-Les standards de l'industrie pour les sites headless similaires
-Les benchmarks de performance connus
-Les best practices de migration WordPress → Headless
-Les études de cas disponibles publiquement
-Ton et précision
-IMPORTANT : Ne fais aucune référence au nom de l'entreprise, à sa marque ou à son secteur d'activité spécifique dans ton analyse.
-Sois factuel et nuancé
-Indique clairement quand tu fais des estimations vs. des mesures réelles
-Propose des fourchettes plutôt que des chiffres précis quand nécessaire
-Cite tes sources quand tu utilises des benchmarks ou études
-Mentionne les hypothèses sur lesquelles tu bases tes calculs
-Livrables attendus
-Un résumé de 500 mots maximum, orienté décision, avec des chiffres concrets qui permettent à un décideur de trancher rapidement.
-IMPORTANT : Réponds EXCLUSIVEMENT en texte structuré Markdown. NE RÉPONDS PAS AU FORMAT JSON.
-IMPORTANT : Commence impérativement ton audit par la section "Résumé exécutif" et assure-toi d'inclure la section "Indicateurs de bénéfice quantifiables" de manière claire car elle sert de point de coupure pour la prévisualisation.`;
+---
+
+
+
+**Étape 1 : Diagnostic d'identité (Scan Précis)**
+
+*Effectue une analyse croisée du contenu visible (Header, Footer, Page "À Propos").*
+
+
+
+1.  **Secteur d'activité :** (Ex: E-commerce B2C, SaaS B2B, Média, etc.)
+
+2.  **Proposition de valeur :** Quelle est la promesse principale faite au client ?
+
+3.  **Mission :** Cite un court extrait du site qui valide cette proposition.
+
+4.  **Cibles prioritaires :** Identifie les 2 profils d'utilisateurs les plus évidents.
+
+*Si le site est inaccessible ou le contenu protégé, réponds uniquement : "Accès bloqué : Diagnostic impossible." et arrête l'analyse.*
+
+
+
+---
+
+
+
+**Étape 2 : Analyse stratégique (Format Markdown)**
+
+
+
+### 1. Positionnement Actuel
+
+*   **Perception de marque :** Le design et la navigation du site inspirent-ils confiance et modernité, ou montrent-ils des signes de retard technologique (lenteur, design daté) ?
+
+*   **Friction UX Majeure :** Quel est le principal obstacle visible dans le parcours utilisateur (ex: formulaire complexe, navigation peu claire, temps de chargement) ?
+
+*   **Indice de modernité :** [Note sur 10] évaluant la performance et l'expérience globale par rapport aux standards actuels.
+
+
+
+### 2. Pertinence d'une migration Headless
+
+*   **Verdict Stratégique :** [Accélérer / Maintenir / Pivoter]. Justifie en une phrase.
+
+*   **Enjeu de Différenciation :** Comment le Headless peut-il transformer l'expérience (ex: ultra-rapide, personnalisée) pour créer un avantage concurrentiel ?
+
+*   **Justification Business :** Quels sont les arguments clés (ROI potentiel) justifiant l'investissement face aux gains attendus en performance, SEO et agilité marketing ?
+
+
+
+### 3. Indicateurs d'Impact business
+
+*   **Performance & SEO :** Quel serait l'impact de temps de chargement quasi-instantanés (Core Web Vitals optimaux) sur le classement Google et le taux de rebond ?
+
+*   **Agilité Marketing :** Explique comment le Headless permettrait aux équipes de lancer plus rapidement des campagnes ou de nouveaux contenus sans dépendre du back-end.
+
+
+
+### 4. Leviers de croissance via Headless
+
+*Identifie 3 fonctionnalités innovantes ou à haute valeur ajoutée que le Headless rendrait possibles.*
+
+1.  (Ex: Configurateur de produit 3D)
+
+2.  (Ex: Portail client personnalisé et immersif)
+
+3.  (Ex: Intégration d'une IA de recommandation)
+
+
+
+### 5. Stack recommandée 
+
+Comparatif des stacks : WordPress monolithique, WP Astro, WP Next.js
+Recommandation de stack
+---
+
+
+
+**Instruction de sortie :** Réponds exclusivement en Markdown. La structure doit suivre les titres et les points de l'étape 2. Insère une synthèse des recommandations en haut d'audit
+
+`;
 
 
   return (

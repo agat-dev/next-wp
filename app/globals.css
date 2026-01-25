@@ -81,7 +81,9 @@
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+
 }
+
 
 @layer base {
 
@@ -132,6 +134,48 @@
         @apply leading-7 text-base;
         font-size: 16px;
     }
+}
+
+@layer base {
+  .prose,
+  .prose :is(p, ul, ol, li, blockquote, figcaption, span) {
+    font-family: var(--font-text);
+    color: var(--color-text) !important;
+  }
+
+  .prose :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-title);
+    color: var(--color-text) !important;
+  }
+
+  .prose strong {
+    color: var(--color-text) !important;
+    font-weight: 600;
+  }
+
+  .prose hr {
+    border-color: var(--color-border) !important;
+  }
+  
+}
+
+
+@layer base {
+  input,
+  textarea,
+  select,
+  button {
+    outline: none;
+    box-shadow: none;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus,
+  button:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 .threads-container {
