@@ -204,7 +204,7 @@ function AuditPreview({ markdown }: { markdown: string }) {
                 className="bg-(--color-accent) text-white rounded-xl px-6 py-3 font-semibold hover:bg-(--color-accent) transition shadow-lg shadow-blue-200 disabled:opacity-80 hover:disabled:opacity-90 whitespace-nowrap"
                 disabled={sending || sent || !email.trim()}
               >
-                {sending ? "Envoi en cours..." : "Recevoir l&rsquo;audit complet"}
+                {sending ? "Envoi en cours..." : "Recevoir l'audit complet"}
               </button>
             </form>
             {error && <p className="text-red-600 text-sm mt-3">{error}</p>}
