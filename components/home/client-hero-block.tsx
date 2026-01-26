@@ -1,5 +1,5 @@
 "use client";
-import ClientGeminiBlock from "./client-gemini-block";
+import ClientGeminiBlock from "@/components/home/client-gemini-block";
 import Threads from "@/components/ui/threads";
 import Image from "next/image";
 
