@@ -1,5 +1,5 @@
 "use client";
-import ClientGeminiBlock from "@/components/client-gemini-block";
+import ClientGeminiBlock from "./client-gemini-block";
 import Threads from "@/components/ui/threads";
 import Image from "next/image";
 
@@ -12,7 +12,7 @@ export default function ClientHeroBlock({ options }: { options: any }) {
           color={[239/255, 242/255, 167/255]} // #F0F2A7
           amplitude={0.9}
           distance={0.7}
-          enableMouseInteraction={true}
+          enableMouseInteraction={true} 
         />
       </div>
       <div
@@ -67,14 +67,14 @@ export default function ClientHeroBlock({ options }: { options: any }) {
               </div>
               {/* Floating badges */}
               <div className="absolute left-6 top-6 bg-white py-2 px-4 rounded-full shadow-lg flex items-center gap-2 animate-float">
-                <span className="h-3 w-3 bg-green-500 rounded-full"></span>
+                <span className="h-3 w-3 bg-coral rounded-full"></span>
                 <span className="text-sm font-medium text-black">
                   Disponible
                 </span>
               </div>
               <div className="absolute right-0 bottom-24 bg-white sm:-mr-12 pr-8 sm:pr-16 py-2 px-4 rounded-full shadow-lg animate-float-delayed z-50 border border-gray-200">
                 <span className="text-sm font-medium text-black">
-                  8+ ans d'expérience
+                  8+ ans d&rsquo;expérience
                 </span>
               </div>
 

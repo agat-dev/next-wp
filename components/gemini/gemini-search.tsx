@@ -45,11 +45,13 @@ export default function GeminiSearch({ onResult, prompt }: GeminiSearchProps) {
 
   return (
     <>
-    <form onSubmit={handleSubmit} className="w-full max-w-xl mx-auto flex flex-col gap-4 p-6 bg-white/80 rounded-2xl shadow">
-      <label htmlFor="gemini_url" className="font-semibold text-lg">URL WordPress à analyser</label>
+    <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 p-4">
+      <h2 className="text-4xl font-medium mb-2 text-white">Analysez votre WordPress
+      </h2>
+      <label htmlFor="gemini_url" className="text-white">Entrez l&rsquo;URL de votre site WordPress pour recevoir une analyse détaillée des bénéfices potentiels d&rsquo;une migration en Headless.</label>
       <input
         id="gemini_url"
-        className="border rounded p-2"
+        className="border rounded-xl p-2 bg-darkblue/30 border-white/20 text-white"
         value={url}
         onChange={e => setUrl(e.target.value)}
         placeholder="Votre URL WordPress à analyser..."
@@ -60,10 +62,10 @@ export default function GeminiSearch({ onResult, prompt }: GeminiSearchProps) {
       />
       <button
         type="submit"
-        className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700 disabled:opacity-50"
+        className="bg-(--color-accent) text-white rounded-xl px-4 py-2 hover:bg-(--color-accent)/90 disabled:opacity-50"
         disabled={loading || !url.trim()}
       >
-        {loading ? "Envoi..." : "Interroger Gemini"}
+        {loading ? "Envoi..." : "Lancer l'analyse"}
       </button>
       {error && <div className="text-red-500">{error}</div>}
     </form>
@@ -163,34 +165,34 @@ function AuditPreview({ markdown }: { markdown: string }) {
   }, [markdown, preview, showFull]);
 
   return (
-    <div className="mt-8 w-full max-w-4xl mx-auto p-8 bg-white/60 rounded-3xl shadow-xl text-left relative overflow-hidden ring-1 ring-black/5">
-      <h3 className="font-bold text-2xl mb-6 text-blue-900 border-b pb-4">
-        Résultat de l'analyse
+    <div className="mt-8 w-full max-w-4xl mx-auto p-8 bg-white/80 rounded-3xl shadow-xl text-left relative overflow-hidden ring-0">
+      <h3 className="font-bold text-2xl mb-6 text-regularblue border-b pb-4">
+        Résultat de l&rsquo;analyse
       </h3>
       
       <div className="relative">
         <div
-          className="prose prose-blue prose-p:leading-relaxed prose-headings:text-blue-900 max-w-none text-slate-700"
+          className="prose prose:text-mediumblue prose-p:leading-relaxed prose-headings:font-medium max-w-none"
           dangerouslySetInnerHTML={{
              __html: htmlContent,
           }}
         />
         
         {!showFull && rest && (
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-(white/70) to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-(white/70) to-transparent pointer-events-none" />
         )}
       </div>
 
       {!showFull && rest && (
         <div className="w-1/2 mx-auto mt-8 border-t pt-8">
             <p className="text-center text-mediumblue font-medium mb-4 flex items-center gap-2">
-              L'audit complet est prêt. Laissez votre email pour accéder à la synthèse et aux recommandations détaillées.
+              L&rsquo;audit complet est prêt. Laissez votre email pour accéder à la synthèse et aux recommandations détaillées.
             </p>
             <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-3">
               <input
                 id="audit_email"
                 type="email"
-                className="flex-1 border-0 ring-1 ring-blue-200 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 bg-white"
+                className="flex-1 border border-(--color-accent) rounded-xl p-3 focus:ring-0 bg-white"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="votre@email.com"
@@ -199,7 +201,7 @@ function AuditPreview({ markdown }: { markdown: string }) {
               />
               <button
                 type="submit"
-                className="bg-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-200 disabled:opacity-50 whitespace-nowrap"
+                className="bg-(--color-accent) text-white rounded-xl px-6 py-3 font-semibold hover:bg-(--color-accent) transition shadow-lg shadow-blue-200 disabled:opacity-80 hover:disabled:opacity-90 whitespace-nowrap"
                 disabled={sending || sent || !email.trim()}
               >
                 {sending ? "Envoi en cours..." : "Recevoir l'audit complet"}
@@ -211,7 +213,7 @@ function AuditPreview({ markdown }: { markdown: string }) {
 
       {showFull && (
         <div className="mt-6 text-center">
-          <p className="text-sm text-green-600 font-medium bg-green-50 py-2 px-4 rounded-full inline-block">
+          <p className="text-sm text-coral font-medium bg-white-50 py-2 px-4 rounded-full inline-block">
             ✓ Audit complet débloqué et envoyé par email
           </p>
         </div>

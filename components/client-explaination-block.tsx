@@ -3,6 +3,8 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import Image from "next/image";
+import SectionTitle from "./block-parts/section-title";
 
 export default function ExplainationBlock({ cards }: { cards: any[] }) {
   const [wpCardsState, setWpCardsState] = useState<any[]>([]);
@@ -32,15 +34,8 @@ export default function ExplainationBlock({ cards }: { cards: any[] }) {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <section>
-      <div className="pb-24 ">
-        <h2 className="text-4xl tracking-tight text-center font-medium text-regularblue">
-          WordPress Headless : quelques explications ?
-        </h2>
-        <p className="font-normal text-lg text-center text-foreground/80">
-          Un site combinant performance et le back-office le plus utilisé.
-        </p>
-      </div>
+    <section className="py-12 bg-gradient-to-b from-extralightblue to-transparent">
+      <SectionTitle title="WordPress Headless : quelques explications ?" subtitle="Un site combinant performance et le back-office le plus utilisé." />
       <AnimatePresence>
         {active && typeof active === "object" && (
           <motion.div
@@ -77,56 +72,41 @@ export default function ExplainationBlock({ cards }: { cards: any[] }) {
             <motion.div
               layoutId={`card-${active.question}-${id}`}
               ref={ref}
-              className="w-full max-w-125  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-4xl h-full md:h-max md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
-              <motion.div layoutId={`image-${active.question}-${id}`}>
-                <img
+              <motion.div className="flex" layoutId={`image-${active.question}-${id}`}>
+                <Image
                   width={200}
                   height={200}
-                  src={active.src}
+                  src={active.image.url}
                   alt={active.question}
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
+                  className="w-full h-20 lg:h-30 sm:rounded-tr-lg sm:rounded-tl-lg object-contain"
                 />
               </motion.div>
 
               <div>
-                <div className="flex justify-between items-start p-4">
-                  <div className="">
+                <div className="w-full flex justify-between items-start p-4">
+                  <div className="w-full flex flex-col gap-4">
                     <motion.h3
                       layoutId={`title-${active.question}-${id}`}
-                      className="font-medium text-regularblue dark:text-neutral-200"
+                      className="font-medium text-regularblue text-2xl"
                     >
                       {active.question}
                     </motion.h3>
                     <motion.p
                       layoutId={`description-${active.answer}-${id}`}
-                      className="text-neutral-600 dark:text-neutral-400"
+                      className="prose max-w-none"
+                      dangerouslySetInnerHTML={{ __html: active.answer }}
+                    />                    
+                    <motion.a
+                      layoutId={`button-${active.question}-${id}`}
+                      href={active.ctas[0]?.cta_link}
+                      target="_blank"
+                      className="w-max h-max px-6 py-2 text-base font-titre rounded-full font-medium bg-(--color-accent) text-white"
                     >
-                      {active.answer}
-                    </motion.p>
+                      {active.ctas[0]?.cta_text}
+                    </motion.a>
                   </div>
-
-                  <motion.a
-                    layoutId={`button-${active.question}-${id}`}
-                    href={active.ctas.cta_link}
-                    target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
-                  >
-                    {active.ctas.cta_text}
-                  </motion.a>
-                </div>
-                <div className="pt-4 relative px-4">
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
-                  >
-                    {typeof active.content === "function"
-                      ? active.content()
-                      : active.content}
-                  </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -143,7 +123,7 @@ export default function ExplainationBlock({ cards }: { cards: any[] }) {
           >
             <div className="flex gap-4 flex-col md:flex-row ">
               <motion.div layoutId={`image-${card.question}-${id}`}>
-                <img
+                <Image
                   width={100}
                   height={100}
                   src={card.image.url}
@@ -154,7 +134,7 @@ export default function ExplainationBlock({ cards }: { cards: any[] }) {
               <div className="flex flex-col gap-2 items-center md:items-start justify-center">
                 <motion.h3
                   layoutId={`title-${card.question}-${id}`}
-                  className="font-medium text-regularblue text-center md:text-left"
+                  className="text-2xl font-medium text-regularblue text-center md:text-left"
                 >
                   {card.question}
                 </motion.h3>

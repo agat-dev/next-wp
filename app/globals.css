@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;700;900&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "./fonts.css";
@@ -20,6 +19,15 @@
 @theme {
 
     /* Poseidon Color Theme */
+    --color-darkblue: #020F59;
+    --color-mediumblue: #021373;
+    --color-regularblue: #1F54BF;
+    --color-lightblue: #719ED9;
+    --color-extralightblue: #D0DCF2;
+    --color-white: #FFFFFF;
+    --color-orange: #F29F05;
+    --color-coral: #FF6B6B;
+    --color-lightyellow: #F2E57E;
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
@@ -48,6 +56,18 @@
 */
 @layer base {
   :root {
+    /* Theme Primary Colors */
+    --color-darkblue: #020F59;
+    --color-mediumblue: #021373;
+    --color-regularblue: #1F54BF;
+    --color-lightblue: #719ED9;
+    --color-extralightblue: #D0DCF2;
+    --color-white: #FFFFFF;
+    --color-orange: #F29F05;
+    --color-coral: #FF6B6B;
+    --color-lightyellow: #F2E57E;
+
+    /* Legacy Color Variables */
     --color-primary: #021373;
     --color-secondary: #020F59;
     --color-accent: #1F54BF;
@@ -59,7 +79,6 @@
     --color-link: #719ED9;
     --color-link-hover: #1F54BF;
     --color-border: #1F54BF;
-    
   }
   *,
   ::after,
@@ -81,32 +100,26 @@
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+
 }
+
 
 @layer base {
 
   body {
-    background: var(--color-bg);
-    color: var(--color-text);
     transition: background 0.2s, color 0.2s;
   }
 
   header, nav {
-    background: var(--color-header);
-    color: var(--color-text);
     transition: background 0.2s, color 0.2s;
   }
 
   a {
-    color: var(--color-link);
     transition: color 0.2s;
-  }
-  a:hover {
-    color: var(--color-link-hover);
   }
 }
 
-@layer base {
+@layer theme {
     * {
         @apply scroll-smooth;
     }
@@ -132,6 +145,48 @@
         @apply leading-7 text-base;
         font-size: 16px;
     }
+}
+
+@layer base {
+  .prose,
+  .prose :is(p, ul, ol, li, blockquote, figcaption, span) {
+    font-family: var(--font-text);
+    color: var(--color-text) !important;
+  }
+
+  .prose :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-title);
+    color: var(--color-text) !important;
+  }
+
+  .prose strong {
+    color: var(--color-text) !important;
+    font-weight: 600;
+  }
+
+  .prose hr {
+    border-color: var(--color-border) !important;
+  }
+  
+}
+
+
+@layer base {
+  input,
+  textarea,
+  select,
+  button {
+    outline: none;
+    box-shadow: none;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus,
+  button:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 .threads-container {

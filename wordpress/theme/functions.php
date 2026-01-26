@@ -70,3 +70,5 @@ add_action('after_setup_theme', function () {
     // Remove WordPress version
     remove_action('wp_head', 'wp_generator');
 });
+// Inclure l'API REST personnalisée pour les options
+require_once get_template_directory() . '/api-headless-options.php';
