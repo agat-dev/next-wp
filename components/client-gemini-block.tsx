@@ -1,9 +1,6 @@
 "use client";
-import { useState } from "react";
-import { marked } from "marked";
 import dynamic from "next/dynamic";
 
-import GradualBlur from "@/components/gradual-blur";
 const GeminiSearch = dynamic(() => import("@/components/gemini/gemini-search"));
 
 export default function ClientGeminiBlock() {
