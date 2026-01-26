@@ -204,7 +204,7 @@ const articleTypographyStyles = [
 // Components
 export const Layout = ({ children, className }: BaseProps) => (
   <html
-    lang="en"
+    lang="fr"
     suppressHydrationWarning
     className={cn("scroll-smooth antialiased focus:scroll-auto", className)}
   >

@@ -3,6 +3,8 @@ import ClientHeroBlock from "@/components/home/client-hero-block";
 import ClientExplainationBlock from "@/components/client-explaination-block";
 import ClientComparatifBlock from "@/components/home/client-comparatif-block";
 
+import HomeHeroBlock from "@/components/home/home-hero-block";
+
 export default async function HomePage() {
   const options = await getOptions();
   if (!options)
@@ -24,11 +26,12 @@ export default async function HomePage() {
         ])
       : [],
   };
-          console.warn("Données formatées pour le comparatif :", comparatifFormatted);
+
+  console.warn('video', options);
 
   return (
     <>
-      <ClientHeroBlock options={options} />
+      <HomeHeroBlock options={options} />
       <ClientExplainationBlock cards={options.explanations} /> 
     </>
   );

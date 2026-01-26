@@ -8,6 +8,7 @@ export interface WPHeadlessOptions {
   hero_subtitle: string;
   hero_cta: string;
   hero_image: string;
+  video_de_demo: Array<{ src: string }>;
   explanations: Array<{
     question: string;
     image: string;
@@ -42,7 +43,6 @@ export async function getOptions(): Promise<WPHeadlessOptions | null> {
     }
     
     // Sinon, essayer l'endpoint ACF natif
-    console.warn('Endpoint personnalisé non disponible, tentative avec ACF REST API');
     return await getOptionsViaACF();
   } catch (error) {
     console.error('Erreur lors de la récupération des options:', error);
@@ -92,6 +92,9 @@ export function getDefaultOptions(): WPHeadlessOptions {
     hero_subtitle: 'Plateforme moderne combinant WordPress et Next.js',
     hero_cta: 'Découvrir',
     hero_image: '',
+    video_de_demo: [
+      { src: 'https://example.com/demo-video.mp4' }
+    ],
     explanations: [
       {
         question: 'Qu\'est-ce qu\'une approche Headless?',

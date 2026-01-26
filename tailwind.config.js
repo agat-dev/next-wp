@@ -10,8 +10,8 @@ module.exports = withMT({
     theme: {
   	extend: {
 		fontFamily: {
-			googletitre: ['var(--font-nunito)', '"Nunito"', 'sans-serif'],
-			googletexte: ['var(--font-inter)', '"Inter"', 'sans-serif'],
+			googletitre: ['Geist Sans', 'sans-serif'],
+			googletexte: ['Inter Tight', 'sans-serif'],
 		},
 		fontWeight: {
 			light: '300',
