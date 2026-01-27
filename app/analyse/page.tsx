@@ -101,7 +101,7 @@ Recommandation de stack
     return (
       <div className="max-w-4xl mx-auto p-8 text-center text-white mt-20">
         <h1 className="text-3xl font-bold mb-4">Aucune URL fournie</h1>
-        <p>Veuillez entrer une URL sur la page d'accueil pour lancer une analyse.</p>
+        <p>Veuillez entrer une URL sur la page d&apos;accueil pour lancer une analyse.</p>
       </div>
     );
   }
